@@ -109,6 +109,8 @@ MERGED from [com.android.support:animated-vector-drawable:25.3.0] /Users/Amod/.a
 MERGED from [com.android.support:support-vector-drawable:25.3.0] /Users/Amod/.android/build-cache/82782b6cabf97aa90669199699781ec89730acd3/output/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:recyclerview-v7:25.3.0] /Users/Amod/.android/build-cache/3d67509da81eee2f7ac5aa681c07ef4d6023de31/output/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:transition:25.3.0] /Users/Amod/.android/build-cache/480cdd9f1f9b979902b20adaadc6386f24af04e7/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.databinding:adapters:1.3.1] /Users/Amod/.android/build-cache/1467219a00f096fb2275409816beefe67ce9862a/output/AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.databinding:library:1.3.1] /Users/Amod/.android/build-cache/eb5ee116ab223d3344500bb421ab252f359aa2ff/output/AndroidManifest.xml:22:5-24:41
 MERGED from [com.android.support:support-v4:25.3.0] /Users/Amod/.android/build-cache/f98129e843f79ecc5b74ade25e34b20fa3d7c167/output/AndroidManifest.xml:21:5-23:54
 MERGED from [com.android.support:support-fragment:25.3.0] /Users/Amod/.android/build-cache/976c92ee42c787dac1a7913ec811f8438ff593cc/output/AndroidManifest.xml:21:5-23:60
 MERGED from [com.android.support:support-media-compat:25.3.0] /Users/Amod/.android/build-cache/a6aeaab2466415f86c268357ee04d7d0c3c3f661/output/AndroidManifest.xml:21:5-23:63

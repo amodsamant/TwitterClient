@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <RelativeLayout
+        android:layout_width="match_parent" android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ivUserBR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            app:srcCompat="@mipmap/ic_launcher" />
+
+
+        <TextView
+            android:id="@+id/tvUsernameBR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@id/ivUserBR"
+            android:layout_toRightOf="@id/ivUserBR"
+            android:text="username" />
+
+        <TextView
+            android:id="@+id/tvScreenNameBR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\@ name"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/tvUsernameBR"
+            android:layout_toEndOf="@id/tvUsernameBR" />
+
+        <TextView
+            android:id="@+id/tvSinceTimeBR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/tvScreenNameBR"/>
+
+        <TextView
+            android:id="@+id/tvTextBR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tvUsernameBR"
+            android:layout_toRightOf="@id/ivUserBR"
+            android:layout_below="@id/tvUsernameBR"
+            android:text="text to display 140chars"
+            android:maxLines="5"
+            android:ellipsize="end"/>
+
+        <ImageView
+            android:id="@+id/ivTweetBR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/ivUserBR"
+            android:layout_below="@id/tvTextBR"
+            android:layout_alignLeft="@id/tvTextBR"
+            app:srcCompat="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tvReplyBR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/ivUserBR"
+            android:layout_below="@id/ivTweetBR"
+            android:text="Reply 1" />
+        <TextView
+            android:id="@+id/tvRetweetBR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tvReplyBR"
+            android:layout_below="@id/ivTweetBR"
+            android:text="Retweet 5" />
+
+        <TextView
+            android:id="@+id/tvLikeBR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Likes 2"
+            android:layout_toRightOf="@id/tvRetweetBR"
+            android:layout_below="@id/ivTweetBR" />
+
+    </RelativeLayout>
+</layout>
