@@ -140,6 +140,10 @@
         "source": "/Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/res/layout/abc_action_mode_close_item_material.xml"
     },
     {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/basic_tweet_row.xml",
+        "source": "/Users/Amod/Documents/CodePath/TwitterClient/app/src/main/res/layout/basic_tweet_row.xml"
+    },
+    {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/notification_template_lines_media.xml",
         "source": "/Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/res/layout/notification_template_lines_media.xml"
     },
@@ -174,6 +178,10 @@
     {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/tweet_detail.xml",
         "source": "/Users/Amod/Documents/CodePath/TwitterClient/app/src/main/res/layout/tweet_detail.xml"
+    },
+    {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/compose.xml",
+        "source": "/Users/Amod/Documents/CodePath/TwitterClient/app/src/main/res/layout/compose.xml"
     },
     {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",

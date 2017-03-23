@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import com.codepath.oauth.OAuthLoginActionBarActivity;
 import com.twitterclient.R;
-import com.twitterclient.TwitterClient;
+import com.twitterclient.network.TwitterClient;
 
 public class LoginActivity extends OAuthLoginActionBarActivity<TwitterClient> {
 
