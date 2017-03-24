@@ -1,100 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-    <RelativeLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="5dp">
+
+    <ImageView
+        android:id="@+id/ivUserBR"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="10dp"
+        tools:srcCompat="@mipmap/ic_launcher" />
+
+
+    <TextView
+        android:id="@+id/tvUsernameBR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/ivUserBR"
+        android:layout_toRightOf="@id/ivUserBR"
+        android:text="username"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/ivVerified"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@id/tvUsernameBR"
+        android:background="@drawable/ic_verified_user" />
+
+    <TextView
+        android:id="@+id/tvScreenNameBR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/ivVerified"
+        android:text="\@ name" />
+
+    <TextView
+        android:id="@+id/dot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvScreenNameBR"
+        android:layout_alignTop="@+id/tvScreenNameBR"
+        android:layout_marginLeft="4dp"
+        android:layout_toEndOf="@+id/tvScreenNameBR"
+        android:paddingBottom="4dp"
+        android:text="."/>
+
+    <TextView
+        android:id="@+id/tvSinceTimeBR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/dot"
+        android:text="Time" />
+
+    <TextView
+        android:id="@+id/tvTextBR"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp">
+        android:ellipsize="end"
+        android:maxLines="5"
+        android:text="text to display 140chars"
+        android:layout_below="@+id/tvUsernameBR"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/ivUserBR"
+        android:autoLink="all"
+        android:linksClickable="true"/>
 
-        <ImageView
-            android:id="@+id/ivUserBR"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            tools:srcCompat="@mipmap/ic_launcher"
-            android:layout_marginRight="10dp"/>
+    <ImageView
+        android:id="@+id/ivTweetBR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tvTextBR"
+        android:layout_below="@id/tvTextBR"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/ivUserBR"
+        tools:srcCompat="@mipmap/ic_launcher" />
+
+    <Button
+        android:id="@+id/btnReplyBR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivTweetBR"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/ivUserBR"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/ic_reply"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textAlignment="textEnd" />
+
+    <Button
+        android:id="@+id/btnRetweetBR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivTweetBR"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/btnReplyBR"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/ic_retweet"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textAlignment="textEnd" />
+
+    <Button
+        android:id="@+id/btnLikeBR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivTweetBR"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/btnRetweetBR"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/ic_favorite"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textAlignment="textEnd" />
 
 
-        <TextView
-            android:id="@+id/tvUsernameBR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@id/ivUserBR"
-            android:layout_toRightOf="@id/ivUserBR"
-            android:text="username"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/tvScreenNameBR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="\@ name"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@id/tvUsernameBR"
-            android:layout_toEndOf="@id/tvUsernameBR"
-            android:layout_marginTop="5dp" />
-
-        <TextView
-            android:id="@+id/tvSinceTimeBR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Time"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@id/tvScreenNameBR"
-            android:layout_marginTop="5dp" />
-
-        <TextView
-            android:id="@+id/tvTextBR"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/tvUsernameBR"
-            android:layout_toRightOf="@id/ivUserBR"
-            android:layout_below="@id/tvUsernameBR"
-            android:text="text to display 140chars"
-            android:maxLines="5"
-            android:ellipsize="end"
-            android:layout_marginTop="5dp" />
-
-        <ImageView
-            android:id="@+id/ivTweetBR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/ivUserBR"
-            android:layout_below="@id/tvTextBR"
-            android:layout_alignLeft="@id/tvTextBR"
-            tools:srcCompat="@mipmap/ic_launcher"
-            android:layout_marginTop="5dp" />
-
-        <Button
-            android:id="@+id/tvReplyBR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/ivUserBR"
-            android:layout_below="@id/ivTweetBR"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"/>
-        <Button
-            android:id="@+id/tvRetweetBR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/tvReplyBR"
-            android:layout_below="@id/ivTweetBR"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"/>
-
-        <Button
-            android:id="@+id/tvLikeBR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/tvRetweetBR"
-            android:layout_below="@id/ivTweetBR"
-            android:layout_marginTop="5dp"/>
-
-    </RelativeLayout>
-</layout>
+</RelativeLayout>

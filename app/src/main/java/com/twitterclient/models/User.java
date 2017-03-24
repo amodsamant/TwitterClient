@@ -21,6 +21,10 @@ public class User {
     @Expose
     String screenName;
 
+    @SerializedName("verified")
+    @Expose
+    boolean verified;
+
     public long getId() {
         return id;
     }
@@ -51,5 +55,13 @@ public class User {
 
     public void setScreenName(String screenName) {
         this.screenName = screenName;
+    }
+
+    public boolean isVerified() {
+        return verified;
+    }
+
+    public void setVerified(boolean verified) {
+        this.verified = verified;
     }
 }

@@ -17,6 +17,10 @@ public class Tweet {
     @Expose
     String createdAt;
 
+    @SerializedName("entities")
+    @Expose
+    Entities entities;
+
     @SerializedName("user")
     @Expose
     User user;
@@ -36,6 +40,10 @@ public class Tweet {
     @SerializedName("favourites_count")
     @Expose
     int favouritesCount;
+
+    @SerializedName("")
+    @Expose
+    String imageUrl;
 
     public long getId() {
         return id;
@@ -99,5 +107,21 @@ public class Tweet {
 
     public void setFavouritesCount(int favouritesCount) {
         this.favouritesCount = favouritesCount;
+    }
+
+    public Entities getEntities() {
+        return entities;
+    }
+
+    public void setEntities(Entities entities) {
+        this.entities = entities;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

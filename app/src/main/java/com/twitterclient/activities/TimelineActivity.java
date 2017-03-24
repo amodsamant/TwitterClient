@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +18,7 @@ import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.twitterclient.R;
 import com.twitterclient.adapters.TimelineRecyclerAdapter;
+import com.twitterclient.fragments.ComposeTweetFragment;
 import com.twitterclient.helpers.EndlessRecyclerViewScrollListener;
 import com.twitterclient.models.Tweet;
 import com.twitterclient.network.TwitterClient;
@@ -30,7 +33,8 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
-public class TimelineActivity extends AppCompatActivity {
+public class TimelineActivity extends AppCompatActivity
+        implements ComposeTweetFragment.ComposeTweetListener {
 
     List<Tweet> tweets;
 
@@ -45,12 +49,15 @@ public class TimelineActivity extends AppCompatActivity {
 
     EndlessRecyclerViewScrollListener scrollListener;
 
+    static long maxTweetId = -1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
 
 //        binding = DataBindingUtil.setContentView(this,R.layout.activity_timeline);
         FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
@@ -59,6 +66,7 @@ public class TimelineActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                openComposeFrag();
             }
         });
 
@@ -68,13 +76,6 @@ public class TimelineActivity extends AppCompatActivity {
 
         layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
 
-        scrollListener = new EndlessRecyclerViewScrollListener(layoutManager) {
-            @Override
-            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                //loadNextDataFromApi(page);
-            }
-        };
-
         recyclerView = (RecyclerView) findViewById(R.id.recycleView);
         dividerItemDecoration = new DividerItemDecoration(this, layoutManager.getOrientation());
 
@@ -82,10 +83,20 @@ public class TimelineActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
+        scrollListener = new EndlessRecyclerViewScrollListener(layoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+
+                loadNextDataFromApi(page);
+            }
+        };
+        recyclerView.addOnScrollListener(scrollListener);
         twitterCLient = TwitterClientApplication.getTwitterClient();
 
-
-        populateTimeline();
+        /**
+         * Calling populate time line with since id of 1 for loading the initial tweets
+         */
+        populateTimeline(maxTweetId,1);
     }
 
     /**
@@ -100,10 +111,9 @@ public class TimelineActivity extends AppCompatActivity {
     }
 
 
-    private void populateTimeline() {
+    private void populateTimeline(long maxId, long sinceId) {
 
-
-        twitterCLient.getTimeline(new JsonHttpResponseHandler() {
+        twitterCLient.getTimeline(maxId, sinceId, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
 
@@ -115,21 +125,52 @@ public class TimelineActivity extends AppCompatActivity {
                         Tweet tweet = gson.fromJson(response.getJSONObject(x).toString(),
                                 Tweet.class);
                         respTweets.add(tweet);
+
+                        maxTweetId = tweet.getId();
+
                     } catch (JSONException e) {
                         //TODO:
                     }
                 }
 
                 tweets.addAll(respTweets);
-                adapter.notifyDataSetChanged();
+                int curSize = adapter.getItemCount();
+                adapter.notifyItemRangeInserted(curSize, tweets.size()-1);
+
             }
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+            public void onFailure(int statusCode, Header[] headers,
+                                  Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
             }
         });
+    }
+
+    public void loadNextDataFromApi(int page) {
+
+        populateTimeline(maxTweetId,-1);
+
+    }
 
 
+    public void openComposeFrag() {
+        FragmentManager fm = getSupportFragmentManager();
+        ComposeTweetFragment fragment = ComposeTweetFragment.getInstance();
+        fragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.Dialog_FullScreen);
+        fragment.show(fm,"compose_frag");
+    }
+
+    @Override
+    public void onFinishTweet(Tweet tweet) {
+
+        tweets.add(0,tweet);
+        adapter.notifyItemInserted(0);
+        layoutManager.scrollToPosition(0);
+
+    }
+
+    public TwitterClient getTwitterCLient() {
+        return twitterCLient;
     }
 }

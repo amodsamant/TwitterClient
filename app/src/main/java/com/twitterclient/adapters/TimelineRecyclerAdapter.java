@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.bumptech.glide.Glide;
 import com.twitterclient.R;
 import com.twitterclient.models.Tweet;
+import com.twitterclient.utils.DateGenericUtils;
 
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
 
             default:
                 View view = inflater.inflate(R.layout.basic_tweet_row, parent, false);
-                viewHolder = new ViewHolder(view);
+                viewHolder = new ViewHolderBR(view);
         }
         return viewHolder;
     }
@@ -43,17 +44,38 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
 
         Tweet tweet = tweets.get(position);
 
-        ViewHolder viewHolder = (ViewHolder) holder;
+        ViewHolderBR viewHolder = (ViewHolderBR) holder;
 
         viewHolder.tvUser.setText(tweet.getUser().getName());
+
+        if(tweet.getUser()!=null && tweet.getUser().isVerified()) {
+            viewHolder.ivVerified.setVisibility(View.VISIBLE);
+        } else {
+            viewHolder.ivVerified.setVisibility(View.GONE);
+        }
+
         viewHolder.tvScreenName.setText("@"+tweet.getUser().getScreenName());
 
+        viewHolder.tvRelTime.setText(DateGenericUtils.
+                getRelativeTimeAgo(tweet.getCreatedAt()));
+
         viewHolder.ivUser.setImageResource(0);
+
         Glide.with(context).load(tweet.getUser().getProfileImageUrl())
                 .fitCenter().into(viewHolder.ivUser);
 
+//        if(tweet.getEntities()!=null && tweet.getEntities().getUrls()!=null &&
+//                !tweet.getEntities().getUrls().isEmpty()  &&
+//                tweet.getEntities().getUrls().get(0).getExpandedUrl()!=null) {
+//
+//            Glide.with(context).load(tweet.getEntities().getUrls().get(0).getExpandedUrl())
+//                    .fitCenter().into(viewHolder.ivTweet);
+//        }
+
         viewHolder.tvBody.setText(tweet.getBody());
 
+        viewHolder.btnLike.setText(String.valueOf(tweet.getFavouritesCount()));
+        viewHolder.btnRetweet.setText(String.valueOf(tweet.getRetweetCount()));
 
     }
 
