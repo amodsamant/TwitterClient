@@ -171,6 +171,15 @@
                 android:layout_toRightOf="@+id/tvTime"
                 android:text="Date" />
 
+            <ImageView
+                android:id="@+id/ivVerified"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/tvUsername"
+                android:layout_marginLeft="5dp"
+                android:layout_toEndOf="@+id/tvUsername"
+                app:srcCompat="@drawable/ic_verified_user" />
+
         </RelativeLayout>
     </ScrollView>
 </layout>

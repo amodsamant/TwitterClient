@@ -23,7 +23,6 @@ public class TweetDetailActivity extends AppCompatActivity {
 
         actBinding = DataBindingUtil.setContentView(this,R.layout.activity_tweet_detail);
 
-
         Tweet tweet = Parcels.unwrap(getIntent().getParcelableExtra("tweet"));
 
         actBinding.tvUsername.setText(tweet.getUser().getName());

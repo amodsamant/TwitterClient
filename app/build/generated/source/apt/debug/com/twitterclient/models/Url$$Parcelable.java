@@ -1,7 +1,6 @@
 
 package com.twitterclient.models;
 
-import java.util.ArrayList;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import org.parceler.Generated;
@@ -10,7 +9,7 @@ import org.parceler.InjectionUtil;
 import org.parceler.ParcelWrapper;
 import org.parceler.ParcelerRuntimeException;
 
-@Generated(value = "org.parceler.ParcelAnnotationProcessor", date = "2017-03-24T17:28-0700")
+@Generated(value = "org.parceler.ParcelAnnotationProcessor", date = "2017-03-25T00:57-0700")
 @SuppressWarnings({
     "unchecked",
     "deprecation"
@@ -53,19 +52,6 @@ public class Url$$Parcelable
         } else {
             parcel$$1 .writeInt(identityMap$$0 .put(url$$1));
             parcel$$1 .writeString(InjectionUtil.getField(java.lang.String.class, com.twitterclient.models.Url.class, url$$1, "displayUrl"));
-            if (InjectionUtil.getField(java.util.List.class, com.twitterclient.models.Url.class, url$$1, "indices") == null) {
-                parcel$$1 .writeInt(-1);
-            } else {
-                parcel$$1 .writeInt(InjectionUtil.getField(java.util.List.class, com.twitterclient.models.Url.class, url$$1, "indices").size());
-                for (java.lang.Integer integer$$0 : ((java.util.List<java.lang.Integer> ) InjectionUtil.getField(java.util.List.class, com.twitterclient.models.Url.class, url$$1, "indices"))) {
-                    if (integer$$0 == null) {
-                        parcel$$1 .writeInt(-1);
-                    } else {
-                        parcel$$1 .writeInt(1);
-                        parcel$$1 .writeInt(integer$$0);
-                    }
-                }
-            }
             parcel$$1 .writeString(InjectionUtil.getField(java.lang.String.class, com.twitterclient.models.Url.class, url$$1, "expandedUrl"));
             parcel$$1 .writeString(InjectionUtil.getField(java.lang.String.class, com.twitterclient.models.Url.class, url$$1, "url"));
         }
@@ -94,24 +80,6 @@ public class Url$$Parcelable
             url$$4 = new com.twitterclient.models.Url();
             identityMap$$1 .put(reservation$$0, url$$4);
             InjectionUtil.setField(com.twitterclient.models.Url.class, url$$4, "displayUrl", parcel$$3 .readString());
-            int int$$0 = parcel$$3 .readInt();
-            ArrayList<java.lang.Integer> list$$0;
-            if (int$$0 < 0) {
-                list$$0 = null;
-            } else {
-                list$$0 = new ArrayList<java.lang.Integer>(int$$0);
-                for (int int$$1 = 0; (int$$1 <int$$0); int$$1 ++) {
-                    int int$$2 = parcel$$3 .readInt();
-                    java.lang.Integer integer$$1;
-                    if (int$$2 < 0) {
-                        integer$$1 = null;
-                    } else {
-                        integer$$1 = parcel$$3 .readInt();
-                    }
-                    list$$0 .add(integer$$1);
-                }
-            }
-            InjectionUtil.setField(com.twitterclient.models.Url.class, url$$4, "indices", list$$0);
             InjectionUtil.setField(com.twitterclient.models.Url.class, url$$4, "expandedUrl", parcel$$3 .readString());
             InjectionUtil.setField(com.twitterclient.models.Url.class, url$$4, "url", parcel$$3 .readString());
             com.twitterclient.models.Url url$$3 = url$$4;

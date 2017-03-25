@@ -2,28 +2,39 @@ package com.twitterclient.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.structure.BaseModel;
 
 import org.parceler.Parcel;
 
-@Parcel
-public class User {
+@Table(database = TwitterDatabase.class)
+@Parcel(analyze ={User.class})
+public class User extends BaseModel {
 
+    @PrimaryKey
+    @Column
     @SerializedName("id")
     @Expose
     long id;
 
+    @Column
     @SerializedName("name")
     @Expose
     String name;
 
+    @Column
     @SerializedName("profile_image_url")
     @Expose
     String profileImageUrl;
 
+    @Column
     @SerializedName("screen_name")
     @Expose
     String screenName;
 
+    @Column
     @SerializedName("verified")
     @Expose
     boolean verified;

@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -87,6 +88,15 @@ public class ComposeTweetFragment extends DialogFragment {
                 tvChars.setText(String.valueOf(count));
                 if(count<0) {
                     tvChars.setTextColor(Color.RED);
+                    btnTweet.setClickable(false);
+                    btnTweet.setBackgroundColor(ContextCompat
+                            .getColor(getContext(),R.color.fadedBlue));
+                } else {
+                    btnTweet.setBackgroundColor(ContextCompat
+                            .getColor(getContext(),R.color.twitterBlue));
+                    btnTweet.setClickable(true);
+                    tvChars.setTextColor(ContextCompat
+                            .getColor(getContext(),R.color.grey));
                 }
             }
 
@@ -109,6 +119,7 @@ public class ComposeTweetFragment extends DialogFragment {
 
                 String tweet = etBody.getText().toString();
                 if(!tweet.isEmpty()){
+
                     postTweet(tweet);
                 }
                 dismiss();
@@ -150,7 +161,7 @@ public class ComposeTweetFragment extends DialogFragment {
 
     public void postTweet(String tweetStr) {
 
-        ((TimelineActivity)getActivity()).getTwitterCLient().postTweet(tweetStr,
+        ((TimelineActivity)getActivity()).getTwitterClient().postTweet(tweetStr,
                 new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

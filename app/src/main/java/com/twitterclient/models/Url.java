@@ -5,10 +5,9 @@ import com.google.gson.annotations.SerializedName;
 
 import org.parceler.Parcel;
 
-import java.util.List;
-
-@Parcel
-public class Url {
+//@Table(database = TwitterDatabase.class)
+@Parcel(analyze ={Url.class})
+public class Url { //extends BaseModel {
 
     @SerializedName("url")
     @Expose
@@ -19,9 +18,9 @@ public class Url {
     @SerializedName("display_url")
     @Expose
     private String displayUrl;
-    @SerializedName("indices")
-    @Expose
-    private List<Integer> indices = null;
+//    @SerializedName("indices")
+//    @Expose
+//    private List<Integer> indices = null;
 
     public String getUrl() {
         return url;
@@ -47,11 +46,11 @@ public class Url {
         this.displayUrl = displayUrl;
     }
 
-    public List<Integer> getIndices() {
-        return indices;
-    }
-
-    public void setIndices(List<Integer> indices) {
-        this.indices = indices;
-    }
+//    public List<Integer> getIndices() {
+//        return indices;
+//    }
+//
+//    public void setIndices(List<Integer> indices) {
+//        this.indices = indices;
+//    }
 }

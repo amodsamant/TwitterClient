@@ -16,11 +16,18 @@ import android.view.View;
 
 import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.raizlabs.android.dbflow.config.FlowManager;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
+import com.raizlabs.android.dbflow.structure.database.DatabaseWrapper;
+import com.raizlabs.android.dbflow.structure.database.transaction.ProcessModelTransaction;
+import com.raizlabs.android.dbflow.structure.database.transaction.Transaction;
 import com.twitterclient.R;
 import com.twitterclient.adapters.TimelineRecyclerAdapter;
 import com.twitterclient.fragments.ComposeTweetFragment;
 import com.twitterclient.helpers.EndlessRecyclerViewScrollListener;
 import com.twitterclient.models.Tweet;
+import com.twitterclient.models.TwitterDatabase;
+import com.twitterclient.network.NetworkUtils;
 import com.twitterclient.network.TwitterClient;
 import com.twitterclient.network.TwitterClientApplication;
 
@@ -71,6 +78,9 @@ public class TimelineActivity extends AppCompatActivity
         });
 
         tweets = new ArrayList<>();
+        if(!NetworkUtils.isNetworkAvailable(this) || !NetworkUtils.isOnline()) {
+            populateTimelineFromDb();
+        }
 
         adapter = new TimelineRecyclerAdapter(this,tweets);
 
@@ -108,7 +118,10 @@ public class TimelineActivity extends AppCompatActivity
         /**
          * Calling populate time line with since id of 1 for loading the initial tweets
          */
-        populateTimeline(maxTweetId,1);
+        if(NetworkUtils.isNetworkAvailable(this) && NetworkUtils.isOnline()) {
+            populateTimeline(maxTweetId, 1);
+        }
+
     }
 
     /**
@@ -159,6 +172,7 @@ public class TimelineActivity extends AppCompatActivity
             @Override
             public void onFailure(int statusCode, Header[] headers,
                                   Throwable throwable, JSONObject errorResponse) {
+                swipeRefreshLayout.setRefreshing(false);
                 super.onFailure(statusCode, headers, throwable, errorResponse);
             }
         });
@@ -186,7 +200,44 @@ public class TimelineActivity extends AppCompatActivity
 
     }
 
-    public TwitterClient getTwitterCLient() {
+    public TwitterClient getTwitterClient() {
         return twitterCLient;
+    }
+
+    @Override
+    protected void onStop() {
+
+        FlowManager.getDatabase(TwitterDatabase.class)
+                .beginTransactionAsync(new ProcessModelTransaction.Builder<>(
+                        new ProcessModelTransaction.ProcessModel<Tweet>() {
+                            @Override
+                            public void processModel(Tweet tweet, DatabaseWrapper wrapper) {
+                                tweet.save();
+                            }
+                        }).addAll(tweets).build())
+                .error(new Transaction.Error() {
+                    @Override
+                    public void onError(Transaction transaction, Throwable error) {
+                        Log.e("ERROR", error.getMessage());
+                    }
+                })
+                .success(new Transaction.Success() {
+                    @Override
+                    public void onSuccess(Transaction transaction) {
+                        Log.d("DEBUG", transaction.toString());
+                    }
+                }).build().execute();
+
+        super.onStop();
+    }
+
+
+    public void populateTimelineFromDb() {
+
+
+        List<Tweet> tweetsFromDb = SQLite.select().from(Tweet.class).queryList();
+
+        tweets.addAll(tweetsFromDb);
+
     }
 }

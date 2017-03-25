@@ -3,4 +3,5 @@
     <color name="toolbar">#1DA1F2</color>
     <color name="twitterBlue">#1DA1F2</color>
     <color name="grey">#ABABAB</color>
+    <color name="fadedBlue">#d1ecfc</color>
 </resources>

@@ -24,6 +24,7 @@ public class ActivityTweetDetailBinding extends android.databinding.ViewDataBind
         sViewsWithIds.put(R.id.tvLikeCount, 13);
         sViewsWithIds.put(R.id.tvTime, 14);
         sViewsWithIds.put(R.id.tvDate, 15);
+        sViewsWithIds.put(R.id.ivVerified, 16);
     }
     // views
     public final android.widget.Button btnLike;
@@ -31,6 +32,7 @@ public class ActivityTweetDetailBinding extends android.databinding.ViewDataBind
     public final android.widget.Button btnRetweet;
     public final android.widget.ImageView ivTweet;
     public final android.widget.ImageView ivUser;
+    public final android.widget.ImageView ivVerified;
     private final android.widget.ScrollView mboundView0;
     public final android.view.View separator1;
     public final android.view.View separator2;
@@ -49,12 +51,13 @@ public class ActivityTweetDetailBinding extends android.databinding.ViewDataBind
 
     public ActivityTweetDetailBinding(android.databinding.DataBindingComponent bindingComponent, View root) {
         super(bindingComponent, root, 0);
-        final Object[] bindings = mapBindings(bindingComponent, root, 16, sIncludes, sViewsWithIds);
+        final Object[] bindings = mapBindings(bindingComponent, root, 17, sIncludes, sViewsWithIds);
         this.btnLike = (android.widget.Button) bindings[10];
         this.btnReply = (android.widget.Button) bindings[8];
         this.btnRetweet = (android.widget.Button) bindings[9];
         this.ivTweet = (android.widget.ImageView) bindings[5];
         this.ivUser = (android.widget.ImageView) bindings[1];
+        this.ivVerified = (android.widget.ImageView) bindings[16];
         this.mboundView0 = (android.widget.ScrollView) bindings[0];
         this.mboundView0.setTag(null);
         this.separator1 = (android.view.View) bindings[11];
