@@ -46,6 +46,7 @@
             android:name="com.twitterclient.activities.TimelineActivity"
             android:label="@string/title_activity_timeline"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="com.twitterclient.activities.TweetDetailActivity" />
     </application>
 
 </manifest>

@@ -3,9 +3,9 @@ package com.twitterclient.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -49,6 +49,8 @@ public class TimelineActivity extends AppCompatActivity
 
     EndlessRecyclerViewScrollListener scrollListener;
 
+    SwipeRefreshLayout swipeRefreshLayout;
+
     static long maxTweetId = -1;
 
     @Override
@@ -64,8 +66,6 @@ public class TimelineActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
                 openComposeFrag();
             }
         });
@@ -93,6 +93,18 @@ public class TimelineActivity extends AppCompatActivity
         recyclerView.addOnScrollListener(scrollListener);
         twitterCLient = TwitterClientApplication.getTwitterClient();
 
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                populateTimeline(-1,0);
+            }
+        });
+
+        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light);
+
         /**
          * Calling populate time line with since id of 1 for loading the initial tweets
          */
@@ -111,12 +123,15 @@ public class TimelineActivity extends AppCompatActivity
     }
 
 
-    private void populateTimeline(long maxId, long sinceId) {
+    private void populateTimeline(long maxId, final long sinceId) {
 
         twitterCLient.getTimeline(maxId, sinceId, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
 
+                if(sinceId==1) {
+                    tweets.clear();
+                }
                 Log.d("DEBUG", response.toString());
                 List<Tweet> respTweets = new ArrayList<>();
                 Gson gson = new Gson();
@@ -137,6 +152,8 @@ public class TimelineActivity extends AppCompatActivity
                 int curSize = adapter.getItemCount();
                 adapter.notifyItemRangeInserted(curSize, tweets.size()-1);
 
+                swipeRefreshLayout.setRefreshing(false);
+
             }
 
             @Override
@@ -150,7 +167,6 @@ public class TimelineActivity extends AppCompatActivity
     public void loadNextDataFromApi(int page) {
 
         populateTimeline(maxTweetId,-1);
-
     }
 
 

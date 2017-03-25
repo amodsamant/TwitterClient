@@ -3,6 +3,9 @@ package com.twitterclient.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Tweet {
 
     @SerializedName("id")
@@ -44,6 +47,9 @@ public class Tweet {
     @SerializedName("")
     @Expose
     String imageUrl;
+
+    public Tweet() {
+    }
 
     public long getId() {
         return id;

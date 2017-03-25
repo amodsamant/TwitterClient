@@ -1,6 +1,7 @@
 package com.twitterclient.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,8 +9,11 @@ import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
 import com.twitterclient.R;
+import com.twitterclient.activities.TweetDetailActivity;
 import com.twitterclient.models.Tweet;
 import com.twitterclient.utils.DateGenericUtils;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -42,7 +46,7 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
-        Tweet tweet = tweets.get(position);
+        final Tweet tweet = tweets.get(position);
 
         ViewHolderBR viewHolder = (ViewHolderBR) holder;
 
@@ -76,6 +80,16 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
 
         viewHolder.btnLike.setText(String.valueOf(tweet.getFavouritesCount()));
         viewHolder.btnRetweet.setText(String.valueOf(tweet.getRetweetCount()));
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(context, TweetDetailActivity.class);
+                intent.putExtra("tweet", Parcels.wrap(tweet));
+                context.startActivity(intent);
+            }
+        });
 
     }
 
