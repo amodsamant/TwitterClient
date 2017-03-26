@@ -102,6 +102,17 @@ public class TweetDetailActivity extends AppCompatActivity {
                 fragment.show(fm,"compose_frag");
             }
         });
+
+
+        final Button btnLike = (Button) findViewById(R.id.btnLike);
+        btnLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                btnLike.setBackgroundResource(R.drawable.ic_favorite_set);
+
+            }
+        });
     }
 
     @Override

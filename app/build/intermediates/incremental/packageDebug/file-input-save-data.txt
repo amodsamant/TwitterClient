@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Mar 26 02:29:09 PDT 2017
+#Sun Mar 26 09:35:38 PDT 2017
 210.set=ANDROID_RESOURCE
 282.file=/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/resources-debug.ap_/res/drawable-xxxhdpi-v4/abc_ic_star_half_black_16dp.png
 14.set=ANDROID_RESOURCE

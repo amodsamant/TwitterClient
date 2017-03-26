@@ -1,6 +1,7 @@
 package com.twitterclient.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
@@ -67,6 +68,20 @@ public class TimelineActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
+
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        String type = intent.getType();
+
+        if (Intent.ACTION_SEND.equals(action) && type != null) {
+            if ("text/plain".equals(type)) {
+
+                // Make sure to check whether returned data will be null.
+                String titleOfPage = intent.getStringExtra(Intent.EXTRA_SUBJECT);
+                String urlOfPage = intent.getStringExtra(Intent.EXTRA_TEXT);
+                Uri imageUriOfPage = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+            }
+        }
 
 //        binding = DataBindingUtil.setContentView(this,R.layout.activity_timeline);
         FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
@@ -239,6 +254,11 @@ public class TimelineActivity extends AppCompatActivity
         List<Tweet> tweetsFromDb = SQLite.select().from(Tweet.class).limit(50).queryList();
 
         tweets.addAll(tweetsFromDb);
+
+    }
+
+
+    public void favorited() {
 
     }
 }

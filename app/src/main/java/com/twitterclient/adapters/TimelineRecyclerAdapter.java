@@ -102,10 +102,11 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
 
 
 
-            viewHolder.tvBody.setText(tweet.getBody());
+        viewHolder.tvBody.setText(tweet.getBody());
 
         viewHolder.btnLike.setText(String.valueOf(tweet.getFavouritesCount()));
         viewHolder.btnRetweet.setText(String.valueOf(tweet.getRetweetCount()));
+        viewHolder.btnLike.setText(String.valueOf(tweet.getFavouritesCount()));
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

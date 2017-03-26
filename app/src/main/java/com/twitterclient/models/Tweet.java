@@ -60,7 +60,7 @@ public class Tweet extends BaseModel {
     int retweetCount;
 
     @Column
-    @SerializedName("favourites_count")
+    @SerializedName("favorite_count")
     @Expose
     int favouritesCount;
 
