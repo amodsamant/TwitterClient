@@ -30,8 +30,14 @@ public class DateGenericUtils {
         String relativeDate = "";
         try {
             long dateMillis = sf.parse(rawJsonDate).getTime();
+            long systemTime = System.currentTimeMillis();
+
+            if(dateMillis>=systemTime) {
+                return "0s";
+            }
+
             relativeDate = DateUtils.getRelativeTimeSpanString(dateMillis,
-                    System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS).toString();
+                    systemTime, DateUtils.SECOND_IN_MILLIS).toString();
 
             int space = relativeDate.indexOf(" ");
             return relativeDate.substring(0,space) + relativeDate.charAt(space+1);
