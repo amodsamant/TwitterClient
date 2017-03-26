@@ -24,6 +24,10 @@
         "source": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_close.xml"
     },
     {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/md_nav_back.xml",
+        "source": "/Users/Amod/.android/build-cache/ef2fbb57206db7f3e43c16766bb0333c521b6fb9/output/res/drawable-anydpi-v21/md_nav_back.xml"
+    },
+    {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/design_ic_visibility.xml",
         "source": "/Users/Amod/.android/build-cache/e1ce7374f563390f207e864440f3e765531a892a/output/res/drawable-anydpi-v21/design_ic_visibility.xml"
     }

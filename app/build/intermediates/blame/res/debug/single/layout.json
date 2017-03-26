@@ -16,8 +16,16 @@
         "source": "/Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/res/layout/abc_alert_dialog_button_bar_material.xml"
     },
     {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/md_stub_titleframe_lesspadding.xml",
+        "source": "/Users/Amod/.android/build-cache/ef2fbb57206db7f3e43c16766bb0333c521b6fb9/output/res/layout/md_stub_titleframe_lesspadding.xml"
+    },
+    {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
         "source": "/Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/res/layout/abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/md_dialog_input.xml",
+        "source": "/Users/Amod/.android/build-cache/ef2fbb57206db7f3e43c16766bb0333c521b6fb9/output/res/layout/md_dialog_input.xml"
     },
     {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
@@ -32,6 +40,10 @@
         "source": "/Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/res/layout/abc_action_mode_bar.xml"
     },
     {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/md_dialog_custom.xml",
+        "source": "/Users/Amod/.android/build-cache/ef2fbb57206db7f3e43c16766bb0333c521b6fb9/output/res/layout/md_dialog_custom.xml"
+    },
+    {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
         "source": "/Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/res/layout/abc_dialog_title_material.xml"
     },
@@ -42,6 +54,10 @@
     {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_header_item_layout.xml",
         "source": "/Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/res/layout/abc_popup_menu_header_item_layout.xml"
+    },
+    {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/md_listitem_multichoice.xml",
+        "source": "/Users/Amod/.android/build-cache/ef2fbb57206db7f3e43c16766bb0333c521b6fb9/output/res/layout/md_listitem_multichoice.xml"
     },
     {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/design_layout_tab_icon.xml",
@@ -76,8 +92,16 @@
         "source": "/Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/res/layout/abc_activity_chooser_view_list_item.xml"
     },
     {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/md_dialog_list.xml",
+        "source": "/Users/Amod/.android/build-cache/ef2fbb57206db7f3e43c16766bb0333c521b6fb9/output/res/layout/md_dialog_list.xml"
+    },
+    {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/design_navigation_menu.xml",
         "source": "/Users/Amod/.android/build-cache/e1ce7374f563390f207e864440f3e765531a892a/output/res/layout/design_navigation_menu.xml"
+    },
+    {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/md_dialog_input_check.xml",
+        "source": "/Users/Amod/.android/build-cache/ef2fbb57206db7f3e43c16766bb0333c521b6fb9/output/res/layout/md_dialog_input_check.xml"
     },
     {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
@@ -92,8 +116,16 @@
         "source": "/Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/res/layout/select_dialog_multichoice_material.xml"
     },
     {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/md_dialog_list_check.xml",
+        "source": "/Users/Amod/.android/build-cache/ef2fbb57206db7f3e43c16766bb0333c521b6fb9/output/res/layout/md_dialog_list_check.xml"
+    },
+    {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
         "source": "/Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/res/layout/abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/drafts_frag.xml",
+        "source": "/Users/Amod/Documents/CodePath/TwitterClient/app/src/main/res/layout/drafts_frag.xml"
     },
     {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/design_navigation_item_subheader.xml",
@@ -112,6 +144,10 @@
         "source": "/Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/res/layout/select_dialog_item_material.xml"
     },
     {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/md_dialog_progress_indeterminate_horizontal.xml",
+        "source": "/Users/Amod/.android/build-cache/ef2fbb57206db7f3e43c16766bb0333c521b6fb9/output/res/layout/md_dialog_progress_indeterminate_horizontal.xml"
+    },
+    {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
         "source": "/Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/res/layout/abc_alert_dialog_material.xml"
     },
@@ -120,16 +156,32 @@
         "source": "/Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/res/layout/abc_screen_content_include.xml"
     },
     {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/md_listitem_singlechoice.xml",
+        "source": "/Users/Amod/.android/build-cache/ef2fbb57206db7f3e43c16766bb0333c521b6fb9/output/res/layout/md_listitem_singlechoice.xml"
+    },
+    {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_checkbox.xml",
         "source": "/Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/res/layout/abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/md_dialog_progress_indeterminate.xml",
+        "source": "/Users/Amod/.android/build-cache/ef2fbb57206db7f3e43c16766bb0333c521b6fb9/output/res/layout/md_dialog_progress_indeterminate.xml"
     },
     {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/fen__view_simple_media_controller.xml",
         "source": "/Users/Amod/.android/build-cache/33cd834838efd0d4f01ce7a7236b5889e82499fd/output/res/layout/fen__view_simple_media_controller.xml"
     },
     {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/md_stub_titleframe.xml",
+        "source": "/Users/Amod/.android/build-cache/ef2fbb57206db7f3e43c16766bb0333c521b6fb9/output/res/layout/md_stub_titleframe.xml"
+    },
+    {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/design_navigation_item_separator.xml",
         "source": "/Users/Amod/.android/build-cache/e1ce7374f563390f207e864440f3e765531a892a/output/res/layout/design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/md_dialog_basic.xml",
+        "source": "/Users/Amod/.android/build-cache/ef2fbb57206db7f3e43c16766bb0333c521b6fb9/output/res/layout/md_dialog_basic.xml"
     },
     {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
@@ -172,6 +224,14 @@
         "source": "/Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/res/layout/abc_alert_dialog_title_material.xml"
     },
     {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/draft_item.xml",
+        "source": "/Users/Amod/Documents/CodePath/TwitterClient/app/src/main/res/layout/draft_item.xml"
+    },
+    {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/md_stub_actionbuttons.xml",
+        "source": "/Users/Amod/.android/build-cache/ef2fbb57206db7f3e43c16766bb0333c521b6fb9/output/res/layout/md_stub_actionbuttons.xml"
+    },
+    {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/abc_action_bar_up_container.xml",
         "source": "/Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/res/layout/abc_action_bar_up_container.xml"
     },
@@ -182,6 +242,10 @@
     {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/activity_login.xml",
         "source": "/Users/Amod/Documents/CodePath/TwitterClient/app/src/main/res/layout/activity_login.xml"
+    },
+    {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/md_dialog_progress.xml",
+        "source": "/Users/Amod/.android/build-cache/ef2fbb57206db7f3e43c16766bb0333c521b6fb9/output/res/layout/md_dialog_progress.xml"
     },
     {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
@@ -198,6 +262,10 @@
     {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/fen__view_media_controller.xml",
         "source": "/Users/Amod/.android/build-cache/33cd834838efd0d4f01ce7a7236b5889e82499fd/output/res/layout/fen__view_media_controller.xml"
+    },
+    {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/md_dialog_basic_check.xml",
+        "source": "/Users/Amod/.android/build-cache/ef2fbb57206db7f3e43c16766bb0333c521b6fb9/output/res/layout/md_dialog_basic_check.xml"
     },
     {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
@@ -218,6 +286,10 @@
     {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/design_bottom_sheet_dialog.xml",
         "source": "/Users/Amod/.android/build-cache/e1ce7374f563390f207e864440f3e765531a892a/output/res/layout/design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/md_listitem.xml",
+        "source": "/Users/Amod/.android/build-cache/ef2fbb57206db7f3e43c16766bb0333c521b6fb9/output/res/layout/md_listitem.xml"
     },
     {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/layout/design_bottom_navigation_item.xml",

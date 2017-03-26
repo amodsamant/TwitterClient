@@ -82,4 +82,16 @@
         android:layout_alignParentBottom="true"
         android:gravity="center"
         />
+
+    <Button
+        android:id="@+id/btnDraft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/ivUser"
+        android:layout_toStartOf="@+id/ivUser"
+        android:text="Draft"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"/>
+
 </RelativeLayout>

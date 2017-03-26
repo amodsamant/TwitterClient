@@ -1,10 +1,14 @@
 package com.twitterclient.fragments;
 
 import android.app.Dialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,7 +22,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.twitterclient.R;
@@ -26,6 +33,10 @@ import com.twitterclient.activities.TimelineActivity;
 import com.twitterclient.models.Tweet;
 
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -35,15 +46,15 @@ public class ComposeTweetFragment extends DialogFragment {
         void onFinishTweet(Tweet tweet);
     }
 
-
     static final String TAG = ComposeTweetFragment.class.getSimpleName();
-
 
     ImageView ivClose;
     ImageView ivUser;
     EditText etBody;
     TextView tvChars;
     Button btnTweet;
+
+    Button btnDraft;
 
     TimelineActivity activity;
 
@@ -73,6 +84,22 @@ public class ComposeTweetFragment extends DialogFragment {
         etBody = (EditText) view.findViewById(R.id.etTweet);
         tvChars = (TextView) view.findViewById(R.id.tvLetterCount);
         btnTweet = (Button) view.findViewById(R.id.btnTweet);
+
+        btnDraft = (Button) view.findViewById(R.id.btnDraft);
+
+        if(getDrafts().isEmpty()) {
+            btnDraft.setVisibility(View.GONE);
+        }
+
+        btnDraft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fm = getFragmentManager();
+                DraftsFragment fragment = DraftsFragment.getInstance();
+                fragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.Dialog_FullScreen);
+                fragment.show(fm,"drafts_frag");
+            }
+        });
 
         etBody.setMaxWidth(view.getWidth());
         etBody.setHintTextColor(Color.GRAY);
@@ -108,8 +135,29 @@ public class ComposeTweetFragment extends DialogFragment {
         ivClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: Show save draft dialog
-                dismiss();
+
+
+                MaterialDialog dialog = new MaterialDialog.Builder(getContext())
+                        .content("Save draft?")
+                        .positiveText("SAVE")
+                        .negativeText("DELETE")
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+
+                                onSaveDraft(etBody.getText().toString());
+                                btnDraft.setVisibility(View.VISIBLE);
+                                dismiss();
+                            }
+                        })
+                        .onNegative(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                dismiss();
+                            }
+                        }).build();
+
+                dialog.show();
             }
         });
 
@@ -188,4 +236,38 @@ public class ComposeTweetFragment extends DialogFragment {
 
 
     }
+
+
+    private void onSaveDraft(String draftTweet) {
+
+        SharedPreferences draftsPref = getSharedPreferences();
+
+        SharedPreferences.Editor editor = draftsPref.edit();
+        editor.putString(System.currentTimeMillis() + "", draftTweet);
+        editor.apply();
+
+    }
+
+
+    private SharedPreferences getSharedPreferences() {
+
+        SharedPreferences draftsPref = getActivity()
+                .getSharedPreferences("Drafts", Context.MODE_PRIVATE);
+
+        return draftsPref;
+    }
+
+    private List<String> getDrafts() {
+
+        SharedPreferences sharedPreferences = getSharedPreferences();
+        Map<String,String> draftsMap = (Map<String, String>) sharedPreferences.getAll();
+        List<String> drafts = new ArrayList<>(draftsMap.values());
+        if(drafts!=null && !drafts.isEmpty()) {
+            Log.d("DEBUG", drafts.get(0));
+            Toast.makeText(getContext(),drafts.get(0),Toast.LENGTH_LONG).show();
+        }
+
+        return drafts;
+    }
+
 }
