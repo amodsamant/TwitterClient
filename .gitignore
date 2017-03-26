@@ -1,4 +1,4 @@
-# built application files
+lt application files
 *.apk
 *.ap_
 
@@ -59,4 +59,4 @@ local.properties
 .cproject
 
 # PDT-specific
-.buildpath
+.buildpath.buildpath

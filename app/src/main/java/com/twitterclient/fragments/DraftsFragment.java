@@ -5,14 +5,16 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.twitterclient.R;
 import com.twitterclient.adapters.DraftsAdapter;
@@ -26,7 +28,6 @@ public class DraftsFragment extends DialogFragment {
     public interface DraftsFragmentListener {
         void onFinishDraft(String tweet);
     }
-
 
     ListView lvDrafts;
     DraftsAdapter adapter;
@@ -45,7 +46,16 @@ public class DraftsFragment extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.drafts_frag, container);
+        View view = inflater.inflate(R.layout.drafts_frag, container);
+
+        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbarDrafts);
+
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.setSupportActionBar(toolbar);
+        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        activity.getSupportActionBar().setTitle("Drafts");
+
+        return view;
     }
 
     @Override
@@ -83,7 +93,6 @@ public class DraftsFragment extends DialogFragment {
         List<String> drafts = new ArrayList<>(draftsMap.values());
         if(drafts!=null && !drafts.isEmpty()) {
             Log.d("DEBUG", drafts.get(0));
-            Toast.makeText(getContext(),drafts.get(0),Toast.LENGTH_LONG).show();
         }
 
         return drafts;
@@ -105,5 +114,13 @@ public class DraftsFragment extends DialogFragment {
         dismiss();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case android.R.id.home:
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }

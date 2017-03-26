@@ -6,7 +6,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.malmstein.fenster.view.FensterVideoView;
 import com.twitterclient.R;
 
 public class ViewHolderBR extends RecyclerView.ViewHolder  {
@@ -24,9 +23,6 @@ public class ViewHolderBR extends RecyclerView.ViewHolder  {
     Button btnRetweet;
     Button btnLike;
 
-    FensterVideoView textureView;
-//    MediaFensterPlayerController playerController;
-
     public ViewHolderBR(View itemView) {
         super(itemView);
 
@@ -43,9 +39,6 @@ public class ViewHolderBR extends RecyclerView.ViewHolder  {
         btnReply = (Button) itemView.findViewById(R.id.btnReplyBR);
         btnRetweet = (Button) itemView.findViewById(R.id.btnRetweetBR);
         btnLike = (Button) itemView.findViewById(R.id.btnLikeBR);
-
-        textureView = (FensterVideoView) itemView.findViewById(R.id.play_video_texture);
-//        playerController = (MediaFensterPlayerController) itemView.findViewById(R.id.play_video_controller);
 
     }
 

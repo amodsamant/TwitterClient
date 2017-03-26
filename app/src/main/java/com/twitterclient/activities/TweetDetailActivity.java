@@ -1,10 +1,12 @@
 package com.twitterclient.activities;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +28,7 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 public class TweetDetailActivity extends AppCompatActivity {
 
 //    ActivityTweetDetailBinding actBinding;
+    DisplayMetrics displayMetrics = new DisplayMetrics();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,10 @@ public class TweetDetailActivity extends AppCompatActivity {
 
         TextView tvTime = (TextView) findViewById(R.id.tvTime);
 
+//        final EditText etReply = (EditText) findViewById(R.id.etReplyDetail);
+//        Button btnReplyDetail = (Button) findViewById(R.id.btnTweetDetail);
+
+
         final Tweet tweet = Parcels.unwrap(getIntent().getParcelableExtra("tweet"));
 
         tvUsername.setText(tweet.getUser().getName());
@@ -67,21 +74,28 @@ public class TweetDetailActivity extends AppCompatActivity {
                 .bitmapTransform( new RoundedCornersTransformation(this,5,5))
                 .into(ivUser);
 
-
+        ivTweet.setImageResource(0);
         if(tweet.getEntities()!=null && tweet.getEntities().getMedia()!=null &&
                 !tweet.getEntities().getMedia().isEmpty()  &&
                 tweet.getEntities().getMedia().get(0).getMediaUrlHttps()!=null) {
             Log.d("DEBUG", tweet.getEntities().getMedia().get(0).getMediaUrlHttps());
+
+            getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+            int height = displayMetrics.heightPixels;
+            int width = displayMetrics.widthPixels;
+
             ivTweet.setVisibility(View.VISIBLE);
-            ivTweet.setImageResource(0);
-            Glide.with(this).load(tweet.getEntities().getMedia().get(0).getMediaUrlHttps())
+
+            Glide.with(this).load(tweet.getEntities().getMedia().get(0).getMediaUrlHttps()+":large")
+                    .override(width,height)
                     .fitCenter()
-                    .bitmapTransform( new RoundedCornersTransformation(this,20,10))
+                    .bitmapTransform( new RoundedCornersTransformation(this,20,5))
                     .into(ivTweet);
         } else {
             ivTweet.setVisibility(View.GONE);
 
         }
+
 
         if(!tweet.getUser().isVerified()) {
             ivVerified.setVisibility(View.GONE);
@@ -105,14 +119,22 @@ public class TweetDetailActivity extends AppCompatActivity {
 
 
         final Button btnLike = (Button) findViewById(R.id.btnLike);
-        btnLike.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        if(tweet.isFavorited()) {
+            Drawable img = getResources().getDrawable(R.drawable.ic_favorite_set);
+            btnLike.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
+        }
 
-                btnLike.setBackgroundResource(R.drawable.ic_favorite_set);
 
-            }
-        });
+//        etReply.setHint("Reply to @"+tweet.getUser().getScreenName());
+//        etReply.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String replyTo = "@"+ tweet.getUser().getScreenName();
+//                etReply.setText(replyTo);
+//                etReply.setSelection(replyTo.length());
+//
+//            }
+//        });
     }
 
     @Override

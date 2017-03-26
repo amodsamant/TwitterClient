@@ -2,17 +2,19 @@ package com.twitterclient.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.twitterclient.R;
 import com.twitterclient.activities.TweetDetailActivity;
 import com.twitterclient.models.Tweet;
 import com.twitterclient.utils.DateGenericUtils;
+import com.twitterclient.utils.GenericUtils;
 
 import org.parceler.Parcels;
 
@@ -51,7 +53,7 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
 
         final Tweet tweet = tweets.get(position);
 
-        ViewHolderBR viewHolder = (ViewHolderBR) holder;
+        final ViewHolderBR viewHolder = (ViewHolderBR) holder;
 
         viewHolder.tvUser.setText(tweet.getUser().getName());
 
@@ -68,18 +70,18 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
 
         viewHolder.ivUser.setImageResource(0);
 
-        Glide.with(context).load(tweet.getUser().getProfileImageUrl())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .fitCenter()
-                .bitmapTransform(new RoundedCornersTransformation(context,5,5))
+        String profileImageUrl = GenericUtils.modifyProfileImageUrl(tweet.getUser().getProfileImageUrl());
+        Glide.with(context).load(profileImageUrl)
+                .bitmapTransform(new RoundedCornersTransformation(context,2,2))
                 .into(viewHolder.ivUser);
 
+        viewHolder.ivTweet.setImageResource(0);
         if(tweet.getEntities()!=null && tweet.getEntities().getMedia()!=null &&
                 !tweet.getEntities().getMedia().isEmpty()  &&
                 tweet.getEntities().getMedia().get(0).getMediaUrlHttps()!=null) {
+            Log.d("DEBUG", tweet.getEntities().getMedia().get(0).getMediaUrlHttps()+":large");
 
-            viewHolder.ivTweet.setImageResource(0);
-            Glide.with(context).load(tweet.getEntities().getMedia().get(0).getMediaUrlHttps())
+            Glide.with(context).load(tweet.getEntities().getMedia().get(0).getMediaUrlHttps()+":large")
                     .fitCenter()
                     .bitmapTransform( new RoundedCornersTransformation(context,20,10))
                     .into(viewHolder.ivTweet);
@@ -92,21 +94,35 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             String videoUrl = tweet.getExtendedEntities()
                     .getMedia().get(0).getVideoInfo().getVariants().get(0).getUrl();
 
-//            viewHolder.textureView.setMediaController(viewHolder.playerController);
-
-            viewHolder.textureView.setVideo(videoUrl);
-            viewHolder.textureView.start();
-
         }
-
-
-
 
         viewHolder.tvBody.setText(tweet.getBody());
 
         viewHolder.btnLike.setText(String.valueOf(tweet.getFavouritesCount()));
         viewHolder.btnRetweet.setText(String.valueOf(tweet.getRetweetCount()));
         viewHolder.btnLike.setText(String.valueOf(tweet.getFavouritesCount()));
+        if(!tweet.isFavorited()) {
+            Drawable img = context.getResources().getDrawable(R.drawable.ic_favorite);
+            viewHolder.btnLike.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
+        }
+        viewHolder.btnLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!tweet.isFavorited()) {
+                    Drawable img = context.getResources().getDrawable(R.drawable.ic_favorite_set);
+                    viewHolder.btnLike.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
+                    tweet.setFavouritesCount(tweet.getFavouritesCount() + 1);
+                    tweet.setFavorited(true);
+                    viewHolder.btnLike.setText(String.valueOf(tweet.getFavouritesCount()));
+                } else {
+                    Drawable img = context.getResources().getDrawable(R.drawable.ic_favorite);
+                    viewHolder.btnLike.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
+                    tweet.setFavouritesCount(tweet.getFavouritesCount() - 1);
+                    tweet.setFavorited(false);
+                    viewHolder.btnLike.setText(String.valueOf(tweet.getFavouritesCount()));
+                }
+            }
+        });
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

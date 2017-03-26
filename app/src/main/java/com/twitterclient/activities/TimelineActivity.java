@@ -181,7 +181,10 @@ public class TimelineActivity extends AppCompatActivity
                 adapter.notifyItemRangeInserted(curSize, tweets.size()-1);
 
                 swipeRefreshLayout.setRefreshing(false);
-                layoutManager.scrollToPosition(0);
+                if(sinceId==1) {
+                    scrollListener.resetState();
+                    layoutManager.scrollToPosition(0);
+                }
 
             }
 
@@ -257,8 +260,4 @@ public class TimelineActivity extends AppCompatActivity
 
     }
 
-
-    public void favorited() {
-
-    }
 }

@@ -7,8 +7,6 @@ class DataBinderMapper  {
     }
     public android.databinding.ViewDataBinding getDataBinder(android.databinding.DataBindingComponent bindingComponent, android.view.View view, int layoutId) {
         switch(layoutId) {
-                case com.twitterclient.R.layout.activity_tweet_detail:
-                    return com.twitterclient.databinding.ActivityTweetDetailBinding.bind(view, bindingComponent);
         }
         return null;
     }
@@ -23,12 +21,6 @@ class DataBinderMapper  {
         }
         final int code = tag.hashCode();
         switch(code) {
-            case 1545724187: {
-                if(tag.equals("layout/activity_tweet_detail_0")) {
-                    return com.twitterclient.R.layout.activity_tweet_detail;
-                }
-                break;
-            }
         }
         return 0;
     }

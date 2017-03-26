@@ -56,7 +56,6 @@ public class ComposeTweetFragment extends DialogFragment
 
     Button btnDraft;
 
-    TimelineActivity activity;
     String replyUser = "";
 
     public ComposeTweetFragment() {
@@ -217,7 +216,8 @@ public class ComposeTweetFragment extends DialogFragment
 
     public void postTweet(String tweetStr) {
 
-        ((TimelineActivity)getActivity()).getTwitterClient().postTweet(tweetStr,
+        final TimelineActivity activity = (TimelineActivity)getActivity();
+        activity.getTwitterClient().postTweet(tweetStr,
                 new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -227,7 +227,6 @@ public class ComposeTweetFragment extends DialogFragment
                         try {
                             Tweet tweet = gson.fromJson(response.toString(), Tweet.class);
 
-                            //TimelineActivity activity = (TimelineActivity) getActivity();
                             activity.onFinishTweet(tweet);
 
                         } catch (Exception e) {
@@ -241,8 +240,6 @@ public class ComposeTweetFragment extends DialogFragment
                         super.onFailure(statusCode, headers, throwable, errorResponse);
                     }
                 });
-
-
     }
 
 
@@ -253,6 +250,8 @@ public class ComposeTweetFragment extends DialogFragment
         SharedPreferences.Editor editor = draftsPref.edit();
         editor.putString(draftTweet, draftTweet);
         editor.apply();
+
+        btnDraft.setVisibility(View.VISIBLE);
 
     }
 
@@ -282,5 +281,9 @@ public class ComposeTweetFragment extends DialogFragment
 
         etBody.setText(tweet);
         etBody.setSelection(tweet.length());
+
+        if(getDrafts()==null || getDrafts().isEmpty()) {
+            btnDraft.setVisibility(View.GONE);
+        }
     }
 }

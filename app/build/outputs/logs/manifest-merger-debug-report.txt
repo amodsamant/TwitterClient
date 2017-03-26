@@ -35,6 +35,8 @@ MERGED from [com.android.support:transition:25.3.0] /Users/Amod/.android/build-c
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/Amod/.android/build-cache/b7aeb94e931d00f55336fe822e53dfd1afae683d/output/AndroidManifest.xml:9:5-20
 MERGED from [com.afollestad.material-dialogs:core:0.9.4.2] /Users/Amod/.android/build-cache/ef2fbb57206db7f3e43c16766bb0333c521b6fb9/output/AndroidManifest.xml:13:5-20
 MERGED from [com.android.support:support-v13:25.3.0] /Users/Amod/.android/build-cache/faed3a40eb70916836a507b747cb8b113f56923e/output/AndroidManifest.xml:29:5-20
+MERGED from [com.github.danylovolokh:video-player-manager:0.2.0] /Users/Amod/.android/build-cache/01e7dde15f7889c000d55c790471d8d4ce890e18/output/AndroidManifest.xml:11:5-14:19
+MERGED from [com.github.danylovolokh:list-visibility-utils:0.2.0] /Users/Amod/.android/build-cache/6b20ac01d9f97751b3da5c75853d84c233e47d8b/output/AndroidManifest.xml:11:5-14:19
 MERGED from [com.android.support:appcompat-v7:25.3.0] /Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:animated-vector-drawable:25.3.0] /Users/Amod/.android/build-cache/0b855e02d14b43921a0ccd1ad567097dbf206b6f/output/AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:support-vector-drawable:25.3.0] /Users/Amod/.android/build-cache/82782b6cabf97aa90669199699781ec89730acd3/output/AndroidManifest.xml:26:5-20
@@ -46,6 +48,8 @@ MERGED from [com.android.support:support-core-utils:25.3.0] /Users/Amod/.android
 MERGED from [com.android.support:support-compat:25.3.0] /Users/Amod/.android/build-cache/e3c66c68602e65a09d07bdbebaea980126ebb986/output/AndroidManifest.xml:29:5-20
 	android:label
 		ADDED from /Users/Amod/Documents/CodePath/TwitterClient/app/src/main/AndroidManifest.xml:16:9-41
+	android:supportsRtl
+		ADDED from [com.github.danylovolokh:video-player-manager:0.2.0] /Users/Amod/.android/build-cache/01e7dde15f7889c000d55c790471d8d4ce890e18/output/AndroidManifest.xml:13:9-35
 	android:allowBackup
 		ADDED from /Users/Amod/Documents/CodePath/TwitterClient/app/src/main/AndroidManifest.xml:14:9-35
 	android:icon
@@ -119,15 +123,16 @@ MERGED from [com.android.support:design:25.3.0] /Users/Amod/.android/build-cache
 MERGED from [com.android.support:transition:25.3.0] /Users/Amod/.android/build-cache/480cdd9f1f9b979902b20adaadc6386f24af04e7/output/AndroidManifest.xml:20:5-44
 MERGED from [com.codepath.libraries:android-oauth-handler:1.1.0] /Users/Amod/.android/build-cache/a03c40d87998c3b340f4f5d0cc0f640f7b81612b/output/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/Amod/.android/build-cache/b7aeb94e931d00f55336fe822e53dfd1afae683d/output/AndroidManifest.xml:5:5-7:41
-MERGED from [com.malmstein:fenster:0.0.2] /Users/Amod/.android/build-cache/33cd834838efd0d4f01ce7a7236b5889e82499fd/output/AndroidManifest.xml:7:5-9:41
 MERGED from [com.afollestad.material-dialogs:core:0.9.4.2] /Users/Amod/.android/build-cache/ef2fbb57206db7f3e43c16766bb0333c521b6fb9/output/AndroidManifest.xml:8:5-11:75
 MERGED from [com.android.support:support-v13:25.3.0] /Users/Amod/.android/build-cache/faed3a40eb70916836a507b747cb8b113f56923e/output/AndroidManifest.xml:21:5-23:55
-MERGED from [com.android.support:recyclerview-v7:25.3.0] /Users/Amod/.android/build-cache/3d67509da81eee2f7ac5aa681c07ef4d6023de31/output/AndroidManifest.xml:20:5-43
 MERGED from [me.zhanghai.android.materialprogressbar:library:1.3.0] /Users/Amod/.android/build-cache/f84c3101a0688bb61b3e8fa5db54207390a56cb7/output/AndroidManifest.xml:12:5-14:41
+MERGED from [jp.wasabeef:glide-transformations:2.0.2] /Users/Amod/.android/build-cache/ecfbaae45ff7f6bb73cd2f458072697c54413357/output/AndroidManifest.xml:8:5-10:41
+MERGED from [com.github.danylovolokh:video-player-manager:0.2.0] /Users/Amod/.android/build-cache/01e7dde15f7889c000d55c790471d8d4ce890e18/output/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.danylovolokh:list-visibility-utils:0.2.0] /Users/Amod/.android/build-cache/6b20ac01d9f97751b3da5c75853d84c233e47d8b/output/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:recyclerview-v7:25.3.0] /Users/Amod/.android/build-cache/3d67509da81eee2f7ac5aa681c07ef4d6023de31/output/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:appcompat-v7:25.3.0] /Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:animated-vector-drawable:25.3.0] /Users/Amod/.android/build-cache/0b855e02d14b43921a0ccd1ad567097dbf206b6f/output/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-vector-drawable:25.3.0] /Users/Amod/.android/build-cache/82782b6cabf97aa90669199699781ec89730acd3/output/AndroidManifest.xml:20:5-43
-MERGED from [jp.wasabeef:glide-transformations:2.0.2] /Users/Amod/.android/build-cache/ecfbaae45ff7f6bb73cd2f458072697c54413357/output/AndroidManifest.xml:8:5-10:41
 MERGED from [com.android.databinding:adapters:1.3.1] /Users/Amod/.android/build-cache/1467219a00f096fb2275409816beefe67ce9862a/output/AndroidManifest.xml:22:5-24:41
 MERGED from [com.android.databinding:library:1.3.1] /Users/Amod/.android/build-cache/eb5ee116ab223d3344500bb421ab252f359aa2ff/output/AndroidManifest.xml:22:5-24:41
 MERGED from [com.android.support:support-v4:25.3.0] /Users/Amod/.android/build-cache/f98129e843f79ecc5b74ade25e34b20fa3d7c167/output/AndroidManifest.xml:21:5-23:54
