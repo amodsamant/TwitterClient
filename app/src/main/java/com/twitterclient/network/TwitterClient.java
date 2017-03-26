@@ -34,6 +34,7 @@ public class TwitterClient extends OAuthBaseClient {
         if(sinceId>0) {
             params.put("since_id",sinceId);
         }
+        params.put("include_entities",true);
 
         getClient().get(apiUrl,params,handler);
 

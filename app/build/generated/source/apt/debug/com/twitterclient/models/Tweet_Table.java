@@ -45,9 +45,7 @@ public final class Tweet_Table extends ModelAdapter<Tweet> {
 
   public static final IntProperty favouritesCount = new IntProperty(Tweet.class, "favouritesCount");
 
-  public static final Property<String> imageUrl = new Property<String>(Tweet.class, "imageUrl");
-
-  public static final IProperty[] ALL_COLUMN_PROPERTIES = new IProperty[]{id,body,createdAt,user_id,favorited,retweeted,retweetCount,favouritesCount,imageUrl};
+  public static final IProperty[] ALL_COLUMN_PROPERTIES = new IProperty[]{id,body,createdAt,user_id,favorited,retweeted,retweetCount,favouritesCount};
 
   public Tweet_Table(DatabaseHolder holder, DatabaseDefinition databaseDefinition) {
     super(databaseDefinition);
@@ -90,9 +88,6 @@ public final class Tweet_Table extends ModelAdapter<Tweet> {
       case "`favouritesCount`":  {
         return favouritesCount;
       }
-      case "`imageUrl`":  {
-        return imageUrl;
-      }
       default:  {
         throw new IllegalArgumentException("Invalid column name passed. Ensure you are calling the correct table's column");
       }
@@ -125,7 +120,6 @@ public final class Tweet_Table extends ModelAdapter<Tweet> {
     values.put("`retweeted`", model.retweeted ? 1 : 0);
     values.put("`retweetCount`", model.retweetCount);
     values.put("`favouritesCount`", model.favouritesCount);
-    values.put("`imageUrl`", model.imageUrl != null ? model.imageUrl : null);
   }
 
   @Override
@@ -150,11 +144,6 @@ public final class Tweet_Table extends ModelAdapter<Tweet> {
     statement.bindLong(6 + start, model.retweeted ? 1 : 0);
     statement.bindLong(7 + start, model.retweetCount);
     statement.bindLong(8 + start, model.favouritesCount);
-    if (model.imageUrl != null)  {
-      statement.bindString(9 + start, model.imageUrl);
-    } else {
-      statement.bindNull(9 + start);
-    }
   }
 
   @Override
@@ -164,17 +153,17 @@ public final class Tweet_Table extends ModelAdapter<Tweet> {
 
   @Override
   public final String getInsertStatementQuery() {
-    return "INSERT INTO `Tweet`(`id`,`body`,`createdAt`,`user_id`,`favorited`,`retweeted`,`retweetCount`,`favouritesCount`,`imageUrl`) VALUES (?,?,?,?,?,?,?,?,?)";
+    return "INSERT INTO `Tweet`(`id`,`body`,`createdAt`,`user_id`,`favorited`,`retweeted`,`retweetCount`,`favouritesCount`) VALUES (?,?,?,?,?,?,?,?)";
   }
 
   @Override
   public final String getCompiledStatementQuery() {
-    return "INSERT INTO `Tweet`(`id`,`body`,`createdAt`,`user_id`,`favorited`,`retweeted`,`retweetCount`,`favouritesCount`,`imageUrl`) VALUES (?,?,?,?,?,?,?,?,?)";
+    return "INSERT INTO `Tweet`(`id`,`body`,`createdAt`,`user_id`,`favorited`,`retweeted`,`retweetCount`,`favouritesCount`) VALUES (?,?,?,?,?,?,?,?)";
   }
 
   @Override
   public final String getCreationQuery() {
-    return "CREATE TABLE IF NOT EXISTS `Tweet`(`id` INTEGER,`body` TEXT,`createdAt` TEXT,`user_id` INTEGER,`favorited` INTEGER,`retweeted` INTEGER,`retweetCount` INTEGER,`favouritesCount` INTEGER,`imageUrl` TEXT, PRIMARY KEY(`id`)"+ ", FOREIGN KEY(`user_id`) REFERENCES " + FlowManager.getTableName(User.class) + "(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION" + ");";
+    return "CREATE TABLE IF NOT EXISTS `Tweet`(`id` INTEGER,`body` TEXT,`createdAt` TEXT,`user_id` INTEGER,`favorited` INTEGER,`retweeted` INTEGER,`retweetCount` INTEGER,`favouritesCount` INTEGER, PRIMARY KEY(`id`)"+ ", FOREIGN KEY(`user_id`) REFERENCES " + FlowManager.getTableName(User.class) + "(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION" + ");";
   }
 
   @Override
@@ -228,12 +217,6 @@ public final class Tweet_Table extends ModelAdapter<Tweet> {
       model.favouritesCount = cursor.getInt(index_favouritesCount);
     } else {
       model.favouritesCount = (int) 0;
-    }
-    int index_imageUrl = cursor.getColumnIndex("imageUrl");
-    if (index_imageUrl != -1 && !cursor.isNull(index_imageUrl)) {
-      model.imageUrl = cursor.getString(index_imageUrl);
-    } else {
-      model.imageUrl = null;
     }
   }
 

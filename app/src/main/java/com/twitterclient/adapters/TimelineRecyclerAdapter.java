@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.twitterclient.R;
 import com.twitterclient.activities.TweetDetailActivity;
 import com.twitterclient.models.Tweet;
@@ -66,17 +67,36 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
         viewHolder.ivUser.setImageResource(0);
 
         Glide.with(context).load(tweet.getUser().getProfileImageUrl())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter().into(viewHolder.ivUser);
 
-//        if(tweet.getEntities()!=null && tweet.getEntities().getUrls()!=null &&
-//                !tweet.getEntities().getUrls().isEmpty()  &&
-//                tweet.getEntities().getUrls().get(0).getExpandedUrl()!=null) {
-//
-//            Glide.with(context).load(tweet.getEntities().getUrls().get(0).getExpandedUrl())
-//                    .fitCenter().into(viewHolder.ivTweet);
-//        }
+        if(tweet.getEntities()!=null && tweet.getEntities().getMedia()!=null &&
+                !tweet.getEntities().getMedia().isEmpty()  &&
+                tweet.getEntities().getMedia().get(0).getMediaUrlHttps()!=null) {
 
-        viewHolder.tvBody.setText(tweet.getBody());
+            viewHolder.ivTweet.setImageResource(0);
+            Glide.with(context).load(tweet.getEntities().getMedia().get(0).getMediaUrlHttps())
+                    .fitCenter().into(viewHolder.ivTweet);
+        }
+
+        if(tweet.getExtendedEntities()!=null && tweet.getExtendedEntities().getMedia()!=null &&
+                !tweet.getExtendedEntities().getMedia().isEmpty()  &&
+                tweet.getExtendedEntities().getMedia().get(0).getType().equalsIgnoreCase("video")) {
+
+            String videoUrl = tweet.getExtendedEntities()
+                    .getMedia().get(0).getVideoInfo().getVariants().get(0).getUrl();
+
+//            viewHolder.textureView.setMediaController(viewHolder.playerController);
+
+            viewHolder.textureView.setVideo(videoUrl);
+            viewHolder.textureView.start();
+
+        }
+
+
+
+
+            viewHolder.tvBody.setText(tweet.getBody());
 
         viewHolder.btnLike.setText(String.valueOf(tweet.getFavouritesCount()));
         viewHolder.btnRetweet.setText(String.valueOf(tweet.getRetweetCount()));

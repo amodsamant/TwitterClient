@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="17"
+        android:minSdkVersion="16"
         android:targetSdkVersion="25" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,8 +14,7 @@
 
     <meta-data
         android:name="android.support.VERSION"
-        android:value="25.3.0" />
-
+        android:value="25.3.0" /> <!-- <uses-permission android:name="android.permission.WRITE_SETTINGS"/> -->
     <application
         android:name="com.twitterclient.network.TwitterClientApplication"
         android:allowBackup="true"

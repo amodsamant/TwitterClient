@@ -92,6 +92,10 @@
         <flag name="basic" value="4"/>
         <flag name="chains" value="8"/>
     </attr>
+    <attr format="enum" name="scaleType">
+    <enum name="scaleToFit" value="0"/>
+    <enum name="crop" value="1"/>
+  </attr>
     <attr format="string" name="title"/>
     <bool name="abc_action_bar_embed_tabs">true</bool>
     <bool name="abc_allow_stacked_button_bar">true</bool>
@@ -132,6 +136,7 @@
     <color name="dim_foreground_material_dark">#ffbebebe</color>
     <color name="dim_foreground_material_light">#ff323232</color>
     <color name="fadedBlue">#d1ecfc</color>
+    <color name="fen__default_bg">#aa000000</color>
     <color name="foreground_material_dark">@android:color/white</color>
     <color name="foreground_material_light">@android:color/black</color>
     <color name="grey">#ABABAB</color>
@@ -369,6 +374,7 @@
         </attr></declare-styleable>
     <declare-styleable name="DesignTheme"><attr format="reference" name="bottomSheetDialogTheme"/><attr format="reference" name="bottomSheetStyle"/><attr format="color" name="textColorError"/></declare-styleable>
     <declare-styleable name="DrawerArrowToggle"><attr format="color" name="color"/><attr format="boolean" name="spinBars"/><attr format="dimension" name="drawableSize"/><attr format="dimension" name="gapBetweenBars"/><attr format="dimension" name="arrowHeadLength"/><attr format="dimension" name="arrowShaftLength"/><attr format="dimension" name="barLength"/><attr format="dimension" name="thickness"/></declare-styleable>
+    <declare-styleable name="FensterVideoView"><attr name="scaleType"/></declare-styleable>
     <declare-styleable name="FloatingActionButton"><attr name="backgroundTint"/><attr name="backgroundTintMode"/><attr format="color" name="rippleColor"/><attr name="fabSize">
             
             <enum name="auto" value="-1"/>
@@ -597,6 +603,17 @@
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="fen__media_controller_bottom_margin">12dip</dimen>
+    <dimen name="fen__media_controller_button_height">52dip</dimen>
+    <dimen name="fen__media_controller_button_width">71dip</dimen>
+    <dimen name="fen__media_controller_seekbar_height">32dip</dimen>
+    <dimen name="fen__media_controller_seekbar_width">32dip</dimen>
+    <dimen name="fen__media_controller_text_size">14sp</dimen>
+    <dimen name="fen__media_controller_top_margin">80dip</dimen>
+    <dimen name="fen__padding_extra_large">48dp</dimen>
+    <dimen name="fen__padding_medium">4dp</dimen>
+    <dimen name="fen__padding_none">0dp</dimen>
+    <dimen name="fen__padding_small">2dp</dimen>
     <item format="float" name="highlight_alpha_material_colored" type="dimen">0.26</item>
     <item format="float" name="highlight_alpha_material_dark" type="dimen">0.20</item>
     <item format="float" name="highlight_alpha_material_light" type="dimen">0.12</item>
@@ -687,6 +704,9 @@
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
+    <string name="fen__app_name">Fenster</string>
+    <string name="fen__play_error_message">Impossible to play the video.</string>
+    <string name="fen__play_progressive_error_message">Impossible to play the progressive video.</string>
     <string name="login_label">Log in</string>
     <string name="password_toggle_content_description">Toggle password visibility</string>
     <string name="path_password_eye" translatable="false">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
@@ -1748,6 +1768,27 @@
         <item name="android:textColor">#ABABAB</item>
         <item name="android:windowBackground">@android:color/white</item>
     </style>
+    <style name="MediaButton">
+    <item name="android:background">@null</item>
+    <item name="android:layout_width">@dimen/fen__media_controller_button_width</item>
+    <item name="android:layout_height">@dimen/fen__media_controller_button_height</item>
+  </style>
+    <style name="MediaButton.Next">
+    <item name="android:src">@android:drawable/ic_media_ff</item>
+  </style>
+    <style name="MediaButton.Play">
+    <item name="android:src">@android:drawable/ic_media_play</item>
+  </style>
+    <style name="MediaButton.Previous">
+    <item name="android:src">@android:drawable/ic_media_rew</item>
+  </style>
+    <style name="MediaText">
+    <item name="android:textSize">@dimen/fen__media_controller_text_size</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:paddingTop">@dimen/fen__padding_medium</item>
+    <item name="android:textColor">@android:color/white</item>
+    <item name="android:gravity">center_horizontal</item>
+  </style>
     <style name="Platform.AppCompat" parent="android:Theme">
         <item name="android:windowNoTitle">true</item>
 

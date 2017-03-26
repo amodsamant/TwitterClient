@@ -10,42 +10,14 @@ import java.util.List;
 @Parcel
 public class Entities {
 
-//    @SerializedName("hashtags")
-//    @Expose
-//    private List<Object> hashtags = null;
-//    @SerializedName("symbols")
-//    @Expose
-//    private List<Object> symbols = null;
-//    @SerializedName("user_mentions")
-//    @Expose
-//    private List<Object> userMentions = null;
     @SerializedName("urls")
     @Expose
-    private List<Url> urls = null;
+    List<Url> urls = null;
 
-//    public List<Object> getHashtags() {
-//        return hashtags;
-//    }
-//
-//    public void setHashtags(List<Object> hashtags) {
-//        this.hashtags = hashtags;
-//    }
-//
-//    public List<Object> getSymbols() {
-//        return symbols;
-//    }
-//
-//    public void setSymbols(List<Object> symbols) {
-//        this.symbols = symbols;
-//    }
-//
-//    public List<Object> getUserMentions() {
-//        return userMentions;
-//    }
-//
-//    public void setUserMentions(List<Object> userMentions) {
-//        this.userMentions = userMentions;
-//    }
+    @SerializedName("media")
+    @Expose
+    List<Media> media;
+
 
     public List<Url> getUrls() {
         return urls;
@@ -53,5 +25,13 @@ public class Entities {
 
     public void setUrls(List<Url> urls) {
         this.urls = urls;
+    }
+
+    public List<Media> getMedia() {
+        return media;
+    }
+
+    public void setMedia(List<Media> media) {
+        this.media = media;
     }
 }

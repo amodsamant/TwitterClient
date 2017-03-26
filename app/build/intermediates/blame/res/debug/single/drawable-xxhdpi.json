@@ -12,11 +12,19 @@
         "source": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_close.png"
     },
     {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/drawable-xxhdpi/fen__ic_action_music_2.png",
+        "source": "/Users/Amod/.android/build-cache/33cd834838efd0d4f01ce7a7236b5889e82499fd/output/res/drawable-xxhdpi/fen__ic_action_music_2.png"
+    },
+    {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_reply.png",
         "source": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_reply.png"
     },
     {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_favorite.png",
         "source": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_favorite.png"
+    },
+    {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/drawable-xxhdpi/fen__ic_action_bulb.png",
+        "source": "/Users/Amod/.android/build-cache/33cd834838efd0d4f01ce7a7236b5889e82499fd/output/res/drawable-xxhdpi/fen__ic_action_bulb.png"
     }
 ]

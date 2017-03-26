@@ -8,7 +8,7 @@ import org.parceler.IdentityCollection;
 import org.parceler.ParcelWrapper;
 import org.parceler.ParcelerRuntimeException;
 
-@Generated(value = "org.parceler.ParcelAnnotationProcessor", date = "2017-03-25T00:57-0700")
+@Generated(value = "org.parceler.ParcelAnnotationProcessor", date = "2017-03-25T19:49-0700")
 @SuppressWarnings({
     "unchecked",
     "deprecation"
@@ -52,12 +52,12 @@ public class Tweet$$Parcelable
             parcel$$1 .writeInt(identityMap$$0 .put(tweet$$1));
             parcel$$1 .writeString(tweet$$1 .createdAt);
             com.twitterclient.models.Entities$$Parcelable.write(tweet$$1 .entities, parcel$$1, flags$$0, identityMap$$0);
-            parcel$$1 .writeString(tweet$$1 .imageUrl);
             parcel$$1 .writeInt(tweet$$1 .favouritesCount);
             parcel$$1 .writeLong(tweet$$1 .id);
             parcel$$1 .writeString(tweet$$1 .body);
             com.twitterclient.models.User$$Parcelable.write(tweet$$1 .user, parcel$$1, flags$$0, identityMap$$0);
             parcel$$1 .writeInt(tweet$$1 .retweetCount);
+            com.twitterclient.models.ExtendedEntities$$Parcelable.write(tweet$$1 .extendedEntities, parcel$$1, flags$$0, identityMap$$0);
             parcel$$1 .writeInt((tweet$$1 .favorited? 1 : 0));
             parcel$$1 .writeInt((tweet$$1 .retweeted? 1 : 0));
         }
@@ -88,13 +88,14 @@ public class Tweet$$Parcelable
             tweet$$4 .createdAt = parcel$$3 .readString();
             Entities entities$$0 = com.twitterclient.models.Entities$$Parcelable.read(parcel$$3, identityMap$$1);
             tweet$$4 .entities = entities$$0;
-            tweet$$4 .imageUrl = parcel$$3 .readString();
             tweet$$4 .favouritesCount = parcel$$3 .readInt();
             tweet$$4 .id = parcel$$3 .readLong();
             tweet$$4 .body = parcel$$3 .readString();
             User user$$0 = com.twitterclient.models.User$$Parcelable.read(parcel$$3, identityMap$$1);
             tweet$$4 .user = user$$0;
             tweet$$4 .retweetCount = parcel$$3 .readInt();
+            ExtendedEntities extendedEntities$$0 = com.twitterclient.models.ExtendedEntities$$Parcelable.read(parcel$$3, identityMap$$1);
+            tweet$$4 .extendedEntities = extendedEntities$$0;
             tweet$$4 .favorited = (parcel$$3 .readInt() == 1);
             tweet$$4 .retweeted = (parcel$$3 .readInt() == 1);
             com.twitterclient.models.Tweet tweet$$3 = tweet$$4;

@@ -18,9 +18,6 @@ public class Url { //extends BaseModel {
     @SerializedName("display_url")
     @Expose
     private String displayUrl;
-//    @SerializedName("indices")
-//    @Expose
-//    private List<Integer> indices = null;
 
     public String getUrl() {
         return url;
@@ -46,11 +43,4 @@ public class Url { //extends BaseModel {
         this.displayUrl = displayUrl;
     }
 
-//    public List<Integer> getIndices() {
-//        return indices;
-//    }
-//
-//    public void setIndices(List<Integer> indices) {
-//        this.indices = indices;
-//    }
 }

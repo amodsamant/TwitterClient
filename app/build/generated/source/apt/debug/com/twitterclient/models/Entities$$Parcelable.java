@@ -1,16 +1,14 @@
 
 package com.twitterclient.models;
 
-import java.util.ArrayList;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import org.parceler.Generated;
 import org.parceler.IdentityCollection;
-import org.parceler.InjectionUtil;
 import org.parceler.ParcelWrapper;
 import org.parceler.ParcelerRuntimeException;
 
-@Generated(value = "org.parceler.ParcelAnnotationProcessor", date = "2017-03-25T00:57-0700")
+@Generated(value = "org.parceler.ParcelAnnotationProcessor", date = "2017-03-25T19:49-0700")
 @SuppressWarnings({
     "unchecked",
     "deprecation"
@@ -52,12 +50,20 @@ public class Entities$$Parcelable
             parcel$$1 .writeInt(identity$$0);
         } else {
             parcel$$1 .writeInt(identityMap$$0 .put(entities$$1));
-            if (InjectionUtil.getField(java.util.List.class, com.twitterclient.models.Entities.class, entities$$1, "urls") == null) {
+            if (entities$$1 .urls == null) {
                 parcel$$1 .writeInt(-1);
             } else {
-                parcel$$1 .writeInt(InjectionUtil.getField(java.util.List.class, com.twitterclient.models.Entities.class, entities$$1, "urls").size());
-                for (com.twitterclient.models.Url url$$0 : ((java.util.List<com.twitterclient.models.Url> ) InjectionUtil.getField(java.util.List.class, com.twitterclient.models.Entities.class, entities$$1, "urls"))) {
+                parcel$$1 .writeInt(entities$$1 .urls.size());
+                for (com.twitterclient.models.Url url$$0 : ((java.util.List<com.twitterclient.models.Url> ) entities$$1 .urls)) {
                     com.twitterclient.models.Url$$Parcelable.write(url$$0, parcel$$1, flags$$0, identityMap$$0);
+                }
+            }
+            if (entities$$1 .media == null) {
+                parcel$$1 .writeInt(-1);
+            } else {
+                parcel$$1 .writeInt(entities$$1 .media.size());
+                for (com.twitterclient.models.Media media$$0 : ((java.util.List<com.twitterclient.models.Media> ) entities$$1 .media)) {
+                    com.twitterclient.models.Media$$Parcelable.write(media$$0, parcel$$1, flags$$0, identityMap$$0);
                 }
             }
         }
@@ -86,17 +92,29 @@ public class Entities$$Parcelable
             entities$$4 = new com.twitterclient.models.Entities();
             identityMap$$1 .put(reservation$$0, entities$$4);
             int int$$0 = parcel$$3 .readInt();
-            ArrayList<com.twitterclient.models.Url> list$$0;
+            java.util.ArrayList<com.twitterclient.models.Url> list$$0;
             if (int$$0 < 0) {
                 list$$0 = null;
             } else {
-                list$$0 = new ArrayList<com.twitterclient.models.Url>(int$$0);
+                list$$0 = new java.util.ArrayList<com.twitterclient.models.Url>(int$$0);
                 for (int int$$1 = 0; (int$$1 <int$$0); int$$1 ++) {
                     com.twitterclient.models.Url url$$1 = com.twitterclient.models.Url$$Parcelable.read(parcel$$3, identityMap$$1);
                     list$$0 .add(url$$1);
                 }
             }
-            InjectionUtil.setField(com.twitterclient.models.Entities.class, entities$$4, "urls", list$$0);
+            entities$$4 .urls = list$$0;
+            int int$$2 = parcel$$3 .readInt();
+            java.util.ArrayList<com.twitterclient.models.Media> list$$1;
+            if (int$$2 < 0) {
+                list$$1 = null;
+            } else {
+                list$$1 = new java.util.ArrayList<com.twitterclient.models.Media>(int$$2);
+                for (int int$$3 = 0; (int$$3 <int$$2); int$$3 ++) {
+                    com.twitterclient.models.Media media$$1 = com.twitterclient.models.Media$$Parcelable.read(parcel$$3, identityMap$$1);
+                    list$$1 .add(media$$1);
+                }
+            }
+            entities$$4 .media = list$$1;
             com.twitterclient.models.Entities entities$$3 = entities$$4;
             identityMap$$1 .put(identity$$1, entities$$3);
             return entities$$3;

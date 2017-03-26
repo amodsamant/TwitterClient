@@ -34,6 +34,10 @@ public class Tweet extends BaseModel {
     @Expose
     Entities entities;
 
+    @SerializedName("extended_entities")
+    @Expose
+    ExtendedEntities extendedEntities;
+
     @ForeignKey(saveForeignKeyModel = true)
     @Column
     @SerializedName("user")
@@ -60,10 +64,6 @@ public class Tweet extends BaseModel {
     @Expose
     int favouritesCount;
 
-    @Column
-    @SerializedName("")
-    @Expose
-    String imageUrl;
 
     public Tweet() {
     }
@@ -140,11 +140,11 @@ public class Tweet extends BaseModel {
         this.entities = entities;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public ExtendedEntities getExtendedEntities() {
+        return extendedEntities;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setExtendedEntities(ExtendedEntities extendedEntities) {
+        this.extendedEntities = extendedEntities;
     }
 }
