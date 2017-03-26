@@ -166,6 +166,7 @@ public class TimelineActivity extends AppCompatActivity
                 adapter.notifyItemRangeInserted(curSize, tweets.size()-1);
 
                 swipeRefreshLayout.setRefreshing(false);
+                layoutManager.scrollToPosition(0);
 
             }
 
@@ -186,7 +187,7 @@ public class TimelineActivity extends AppCompatActivity
 
     public void openComposeFrag() {
         FragmentManager fm = getSupportFragmentManager();
-        ComposeTweetFragment fragment = ComposeTweetFragment.getInstance();
+        ComposeTweetFragment fragment = ComposeTweetFragment.getInstance(null);
         fragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.Dialog_FullScreen);
         fragment.show(fm,"compose_frag");
     }
@@ -235,7 +236,7 @@ public class TimelineActivity extends AppCompatActivity
     public void populateTimelineFromDb() {
 
 
-        List<Tweet> tweetsFromDb = SQLite.select().from(Tweet.class).queryList();
+        List<Tweet> tweetsFromDb = SQLite.select().from(Tweet.class).limit(50).queryList();
 
         tweets.addAll(tweetsFromDb);
 

@@ -6,5 +6,10 @@
     <TextView
         android:id="@+id/tvDraft"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:fontFamily="sans-serif"
+        android:textSize="22sp"
+        android:maxLines="3"
+        android:ellipsize="end"/>
 </FrameLayout>

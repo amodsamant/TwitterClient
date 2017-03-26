@@ -18,6 +18,8 @@ import org.parceler.Parcels;
 
 import java.util.List;
 
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
 public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     Context context;
@@ -68,7 +70,9 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
 
         Glide.with(context).load(tweet.getUser().getProfileImageUrl())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .fitCenter().into(viewHolder.ivUser);
+                .fitCenter()
+                .bitmapTransform(new RoundedCornersTransformation(context,5,5))
+                .into(viewHolder.ivUser);
 
         if(tweet.getEntities()!=null && tweet.getEntities().getMedia()!=null &&
                 !tweet.getEntities().getMedia().isEmpty()  &&
@@ -76,7 +80,9 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
 
             viewHolder.ivTweet.setImageResource(0);
             Glide.with(context).load(tweet.getEntities().getMedia().get(0).getMediaUrlHttps())
-                    .fitCenter().into(viewHolder.ivTweet);
+                    .fitCenter()
+                    .bitmapTransform( new RoundedCornersTransformation(context,20,10))
+                    .into(viewHolder.ivTweet);
         }
 
         if(tweet.getExtendedEntities()!=null && tweet.getExtendedEntities().getMedia()!=null &&

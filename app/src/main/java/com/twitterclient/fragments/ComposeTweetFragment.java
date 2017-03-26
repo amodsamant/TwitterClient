@@ -22,7 +22,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -40,7 +39,8 @@ import java.util.Map;
 
 import cz.msebera.android.httpclient.Header;
 
-public class ComposeTweetFragment extends DialogFragment {
+public class ComposeTweetFragment extends DialogFragment
+        implements DraftsFragment.DraftsFragmentListener{
 
     public interface ComposeTweetListener {
         void onFinishTweet(Tweet tweet);
@@ -57,14 +57,16 @@ public class ComposeTweetFragment extends DialogFragment {
     Button btnDraft;
 
     TimelineActivity activity;
+    String replyUser = "";
 
     public ComposeTweetFragment() {
     }
 
-    public static ComposeTweetFragment getInstance() {
+    public static ComposeTweetFragment getInstance(String replyUser) {
 
         ComposeTweetFragment frag = new ComposeTweetFragment();
         Bundle args = new Bundle();
+        args.putString("replyUser",replyUser);
         frag.setArguments(args);
         return frag;
     }
@@ -96,6 +98,7 @@ public class ComposeTweetFragment extends DialogFragment {
             public void onClick(View view) {
                 FragmentManager fm = getFragmentManager();
                 DraftsFragment fragment = DraftsFragment.getInstance();
+                fragment.setTargetFragment(ComposeTweetFragment.this, 0);
                 fragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.Dialog_FullScreen);
                 fragment.show(fm,"drafts_frag");
             }
@@ -132,32 +135,42 @@ public class ComposeTweetFragment extends DialogFragment {
             }
         });
 
+        String screenName = getArguments().getString("replyUser");
+        if(screenName!=null) {
+            String tweetTo = "@"+screenName+ " ";
+            etBody.setText(tweetTo);
+            etBody.setSelection(tweetTo.length());
+        }
+
         ivClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                if(etBody.getText().length()>0) {
+                    MaterialDialog dialog = new MaterialDialog.Builder(getContext())
+                            .content("Save draft?")
+                            .positiveText("SAVE")
+                            .negativeText("DELETE")
+                            .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                @Override
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
 
-                MaterialDialog dialog = new MaterialDialog.Builder(getContext())
-                        .content("Save draft?")
-                        .positiveText("SAVE")
-                        .negativeText("DELETE")
-                        .onPositive(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                    onSaveDraft(etBody.getText().toString());
+                                    btnDraft.setVisibility(View.VISIBLE);
+                                    dismiss();
+                                }
+                            })
+                            .onNegative(new MaterialDialog.SingleButtonCallback() {
+                                @Override
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                    dismiss();
+                                }
+                            }).build();
 
-                                onSaveDraft(etBody.getText().toString());
-                                btnDraft.setVisibility(View.VISIBLE);
-                                dismiss();
-                            }
-                        })
-                        .onNegative(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                dismiss();
-                            }
-                        }).build();
-
-                dialog.show();
+                    dialog.show();
+                } else {
+                    dismiss();
+                }
             }
         });
 
@@ -189,11 +202,6 @@ public class ComposeTweetFragment extends DialogFragment {
         super.onActivityCreated(savedInstanceState);
         getDialog().getWindow()
                 .setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-
-        activity = (TimelineActivity) getActivity();
-
-        Log.d(TAG,"Activity state test");
-
     }
 
     @Override
@@ -243,7 +251,7 @@ public class ComposeTweetFragment extends DialogFragment {
         SharedPreferences draftsPref = getSharedPreferences();
 
         SharedPreferences.Editor editor = draftsPref.edit();
-        editor.putString(System.currentTimeMillis() + "", draftTweet);
+        editor.putString(draftTweet, draftTweet);
         editor.apply();
 
     }
@@ -264,10 +272,15 @@ public class ComposeTweetFragment extends DialogFragment {
         List<String> drafts = new ArrayList<>(draftsMap.values());
         if(drafts!=null && !drafts.isEmpty()) {
             Log.d("DEBUG", drafts.get(0));
-            Toast.makeText(getContext(),drafts.get(0),Toast.LENGTH_LONG).show();
         }
 
         return drafts;
     }
 
+    @Override
+    public void onFinishDraft(String tweet) {
+
+        etBody.setText(tweet);
+        etBody.setSelection(tweet.length());
+    }
 }

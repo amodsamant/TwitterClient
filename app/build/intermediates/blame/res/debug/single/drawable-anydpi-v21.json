@@ -20,6 +20,10 @@
         "source": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_retweet.xml"
     },
     {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_tweet.xml",
+        "source": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_tweet.xml"
+    },
+    {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/drawable-anydpi-v21/ic_close.xml",
         "source": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_close.xml"
     },

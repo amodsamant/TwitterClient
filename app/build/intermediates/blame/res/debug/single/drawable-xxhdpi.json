@@ -26,5 +26,9 @@
     {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/drawable-xxhdpi/fen__ic_action_bulb.png",
         "source": "/Users/Amod/.android/build-cache/33cd834838efd0d4f01ce7a7236b5889e82499fd/output/res/drawable-xxhdpi/fen__ic_action_bulb.png"
+    },
+    {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_tweet.png",
+        "source": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_tweet.png"
     }
 ]

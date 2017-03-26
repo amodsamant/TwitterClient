@@ -32,36 +32,36 @@ public final class R {
     }
     public static final class id {
         public static final int crop = 0x7f0d001f;
-        public static final int fen__media_controller_bottom_area = 0x7f0d00c1;
-        public static final int fen__media_controller_brightness = 0x7f0d00c6;
-        public static final int fen__media_controller_controls = 0x7f0d00c5;
-        public static final int fen__media_controller_loading_view = 0x7f0d00bd;
-        public static final int fen__media_controller_next = 0x7f0d00c9;
-        public static final int fen__media_controller_pause = 0x7f0d00c8;
-        public static final int fen__media_controller_previous = 0x7f0d00c7;
-        public static final int fen__media_controller_progress = 0x7f0d00c3;
-        public static final int fen__media_controller_time = 0x7f0d00c4;
-        public static final int fen__media_controller_time_current = 0x7f0d00c2;
-        public static final int fen__media_controller_volume = 0x7f0d00ca;
-        public static final int fen__play_gesture_controller = 0x7f0d00b7;
-        public static final int fen__play_gesture_horizontal_seekbar = 0x7f0d00b8;
-        public static final int fen__play_gesture_vertical_seekbar = 0x7f0d00b9;
-        public static final int fen__play_video_controller = 0x7f0d00bb;
-        public static final int fen__play_video_loading = 0x7f0d00bc;
-        public static final int fen__play_video_texture = 0x7f0d00ba;
-        public static final int media_controller_bottom_root = 0x7f0d00c0;
-        public static final int media_controller_controls_root = 0x7f0d00cc;
-        public static final int media_controller_gestures_area = 0x7f0d00bf;
-        public static final int media_controller_root = 0x7f0d00be;
-        public static final int media_controller_touch_root = 0x7f0d00cb;
+        public static final int fen__media_controller_bottom_area = 0x7f0d00c2;
+        public static final int fen__media_controller_brightness = 0x7f0d00c7;
+        public static final int fen__media_controller_controls = 0x7f0d00c6;
+        public static final int fen__media_controller_loading_view = 0x7f0d00be;
+        public static final int fen__media_controller_next = 0x7f0d00ca;
+        public static final int fen__media_controller_pause = 0x7f0d00c9;
+        public static final int fen__media_controller_previous = 0x7f0d00c8;
+        public static final int fen__media_controller_progress = 0x7f0d00c4;
+        public static final int fen__media_controller_time = 0x7f0d00c5;
+        public static final int fen__media_controller_time_current = 0x7f0d00c3;
+        public static final int fen__media_controller_volume = 0x7f0d00cb;
+        public static final int fen__play_gesture_controller = 0x7f0d00b8;
+        public static final int fen__play_gesture_horizontal_seekbar = 0x7f0d00b9;
+        public static final int fen__play_gesture_vertical_seekbar = 0x7f0d00ba;
+        public static final int fen__play_video_controller = 0x7f0d00bc;
+        public static final int fen__play_video_loading = 0x7f0d00bd;
+        public static final int fen__play_video_texture = 0x7f0d00bb;
+        public static final int media_controller_bottom_root = 0x7f0d00c1;
+        public static final int media_controller_controls_root = 0x7f0d00cd;
+        public static final int media_controller_gestures_area = 0x7f0d00c0;
+        public static final int media_controller_root = 0x7f0d00bf;
+        public static final int media_controller_touch_root = 0x7f0d00cc;
         public static final int scaleToFit = 0x7f0d0020;
     }
     public static final class layout {
-        public static final int fen__fragment_fenster_gesture = 0x7f040031;
-        public static final int fen__fragment_fenster_video = 0x7f040032;
-        public static final int fen__view_loading = 0x7f040033;
-        public static final int fen__view_media_controller = 0x7f040034;
-        public static final int fen__view_simple_media_controller = 0x7f040035;
+        public static final int fen__fragment_fenster_gesture = 0x7f040032;
+        public static final int fen__fragment_fenster_video = 0x7f040033;
+        public static final int fen__view_loading = 0x7f040034;
+        public static final int fen__view_media_controller = 0x7f040035;
+        public static final int fen__view_simple_media_controller = 0x7f040036;
     }
     public static final class string {
         public static final int fen__app_name = 0x7f070025;

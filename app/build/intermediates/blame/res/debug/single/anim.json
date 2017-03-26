@@ -32,12 +32,12 @@
         "source": "/Users/Amod/.android/build-cache/e1ce7374f563390f207e864440f3e765531a892a/output/res/anim/design_fab_out.xml"
     },
     {
-        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
-        "source": "/Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/res/anim/abc_fade_out.xml"
-    },
-    {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/anim/popup_exit.xml",
         "source": "/Users/Amod/.android/build-cache/ef2fbb57206db7f3e43c16766bb0333c521b6fb9/output/res/anim/popup_exit.xml"
+    },
+    {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
+        "source": "/Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/res/anim/abc_fade_out.xml"
     },
     {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",

@@ -28,12 +28,12 @@
         "source": "/Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/res/drawable-v21/abc_edit_text_material.xml"
     },
     {
-        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
-        "source": "/Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/res/drawable-v21/abc_btn_colored_material.xml"
-    },
-    {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/drawable-v21/md_btn_selector_ripple_dark.xml",
         "source": "/Users/Amod/.android/build-cache/ef2fbb57206db7f3e43c16766bb0333c521b6fb9/output/res/drawable-v21/md_btn_selector_ripple_dark.xml"
+    },
+    {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
+        "source": "/Users/Amod/.android/build-cache/f0006ef14809e7cc7ca7f6e4647939f02d34826b/output/res/drawable-v21/abc_btn_colored_material.xml"
     },
     {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/drawable-v21/md_btn_shape.xml",

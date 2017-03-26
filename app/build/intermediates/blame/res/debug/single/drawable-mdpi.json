@@ -16,6 +16,10 @@
         "source": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/generated/res/pngs/debug/drawable-mdpi/ic_reply.png"
     },
     {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/drawable-mdpi/ic_tweet.png",
+        "source": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/generated/res/pngs/debug/drawable-mdpi/ic_tweet.png"
+    },
+    {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/drawable-mdpi/ic_favorite.png",
         "source": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/generated/res/pngs/debug/drawable-mdpi/ic_favorite.png"
     }

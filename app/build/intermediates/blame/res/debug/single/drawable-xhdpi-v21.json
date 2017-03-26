@@ -6,5 +6,9 @@
     {
         "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/drawable-xhdpi-v21/ic_retweet_set.xml",
         "source": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/generated/res/pngs/debug/drawable-xhdpi-v21/ic_retweet_set.xml"
+    },
+    {
+        "merged": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/merged/debug/drawable-xhdpi-v21/ic_tweet_toolbar.xml",
+        "source": "/Users/Amod/Documents/CodePath/TwitterClient/app/build/generated/res/pngs/debug/drawable-xhdpi-v21/ic_tweet_toolbar.xml"
     }
 ]
