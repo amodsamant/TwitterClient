@@ -3,6 +3,9 @@ package com.twitterclient.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -14,6 +17,7 @@ import android.view.WindowManager;
 import com.bumptech.glide.Glide;
 import com.twitterclient.R;
 import com.twitterclient.activities.TweetDetailActivity;
+import com.twitterclient.fragments.ComposeTweetFragment;
 import com.twitterclient.models.Tweet;
 import com.twitterclient.utils.DateGenericUtils;
 import com.twitterclient.utils.GenericUtils;
@@ -23,6 +27,7 @@ import org.parceler.Parcels;
 import java.util.List;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
 
 public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -108,8 +113,33 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
 
         viewHolder.tvBody.setText(tweet.getBody());
 
-        viewHolder.btnLike.setText(String.valueOf(tweet.getFavouritesCount()));
+
         viewHolder.btnRetweet.setText(String.valueOf(tweet.getRetweetCount()));
+        if(!tweet.isRetweeted()) {
+            Drawable img = context.getResources().getDrawable(R.drawable.ic_retweet);
+            viewHolder.btnRetweet.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
+        }
+        viewHolder.btnRetweet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!tweet.isRetweeted()) {
+                    Drawable img = context.getResources().getDrawable(R.drawable.ic_retweet_set);
+                    viewHolder.btnRetweet.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
+                    tweet.setRetweetCount(tweet.getRetweetCount() + 1);
+                    tweet.setRetweeted(true);
+                    viewHolder.btnRetweet.setText(String.valueOf(tweet.getRetweetCount()));
+                } else {
+                    Drawable img = context.getResources().getDrawable(R.drawable.ic_retweet);
+                    viewHolder.btnRetweet.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
+                    tweet.setRetweetCount(tweet.getRetweetCount() - 1);
+                    tweet.setRetweeted(false);
+                    viewHolder.btnRetweet.setText(String.valueOf(tweet.getRetweetCount()));
+                }
+            }
+        });
+
+        viewHolder.btnLike.setText(String.valueOf(tweet.getFavouritesCount()));
+
         viewHolder.btnLike.setText(String.valueOf(tweet.getFavouritesCount()));
         if(!tweet.isFavorited()) {
             Drawable img = context.getResources().getDrawable(R.drawable.ic_favorite);
@@ -131,6 +161,18 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
                     tweet.setFavorited(false);
                     viewHolder.btnLike.setText(String.valueOf(tweet.getFavouritesCount()));
                 }
+            }
+        });
+
+        viewHolder.btnReply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                FragmentManager fm = ((AppCompatActivity)context).getSupportFragmentManager();
+                ComposeTweetFragment fragment = ComposeTweetFragment
+                        .getInstance(tweet.getUser().getScreenName());
+                fragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.Dialog_FullScreen);
+                fragment.show(fm,"compose_frag");
             }
         });
 

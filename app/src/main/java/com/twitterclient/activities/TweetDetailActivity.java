@@ -118,12 +118,17 @@ public class TweetDetailActivity extends AppCompatActivity {
         });
 
 
-        final Button btnLike = (Button) findViewById(R.id.btnLike);
+        Button btnLike = (Button) findViewById(R.id.btnLike);
         if(tweet.isFavorited()) {
             Drawable img = getResources().getDrawable(R.drawable.ic_favorite_set);
             btnLike.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
         }
 
+        final Button btnRetweet = (Button) findViewById(R.id.btnRetweet);
+        if(tweet.isRetweeted()) {
+            Drawable img = getResources().getDrawable(R.drawable.ic_retweet_set);
+            btnRetweet.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
+        }
 
 //        etReply.setHint("Reply to @"+tweet.getUser().getScreenName());
 //        etReply.setOnClickListener(new View.OnClickListener() {

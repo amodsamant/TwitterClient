@@ -62,7 +62,8 @@ public class ComposeTweetFragment extends DialogFragment
 
     Button btnDraft;
 
-    String replyUser = "";
+
+    static final String TWEET = "tweet";
 
     public ComposeTweetFragment() {
     }
@@ -71,7 +72,7 @@ public class ComposeTweetFragment extends DialogFragment
 
         ComposeTweetFragment frag = new ComposeTweetFragment();
         Bundle args = new Bundle();
-        args.putString("tweet",tweetData);
+        args.putString(TWEET,tweetData);
         frag.setArguments(args);
         return frag;
     }
@@ -108,8 +109,8 @@ public class ComposeTweetFragment extends DialogFragment
                 fragment.show(fm,"drafts_frag");
             }
         });
-
-        etBody.setMaxWidth(view.getWidth());
+        
+        etBody.setHorizontallyScrolling(false);
         etBody.setHintTextColor(Color.GRAY);
         etBody.setTextColor(Color.GRAY);
         etBody.addTextChangedListener(new TextWatcher() {
@@ -140,9 +141,9 @@ public class ComposeTweetFragment extends DialogFragment
             }
         });
 
-        String screenName = getArguments().getString("replyUser");
+        String screenName = getArguments().getString(TWEET);
         if(screenName!=null) {
-            String tweetTo = "@"+screenName+ " ";
+            String tweetTo = screenName;
             etBody.setText(tweetTo);
             etBody.setSelection(tweetTo.length());
         }

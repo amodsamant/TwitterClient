@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Mar 26 17:10:44 PDT 2017
+#Sun Mar 26 18:19:20 PDT 2017
 210.set=ANDROID_RESOURCE
 282.file=/Users/Amod/Documents/CodePath/TwitterClient/app/build/intermediates/res/resources-debug.ap_/res/drawable/abc_ratingbar_material.xml
 14.set=ANDROID_RESOURCE

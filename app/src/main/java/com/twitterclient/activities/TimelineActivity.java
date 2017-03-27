@@ -253,7 +253,6 @@ public class TimelineActivity extends AppCompatActivity
 
 
         List<Tweet> tweetsFromDb = SQLite.select().from(Tweet.class).limit(50).queryList();
-
         tweets.addAll(tweetsFromDb);
 
     }
