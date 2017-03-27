@@ -44,18 +44,14 @@ public class TimelineActivity extends AppCompatActivity
         implements ComposeTweetFragment.ComposeTweetListener {
 
     List<Tweet> tweets;
-
     RecyclerView recyclerView;
-
     TimelineRecyclerAdapter adapter;
 
     TwitterClient twitterCLient;
 
     DividerItemDecoration dividerItemDecoration;
     LinearLayoutManager layoutManager;
-
     EndlessRecyclerViewScrollListener scrollListener;
-
     SwipeRefreshLayout swipeRefreshLayout;
 
     static long maxTweetId = -1;
@@ -69,6 +65,9 @@ public class TimelineActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
 
+        /**
+         * Code to handle implicit intents
+         */
         Intent intent = getIntent();
         String action = intent.getAction();
         String type = intent.getType();
@@ -80,6 +79,9 @@ public class TimelineActivity extends AppCompatActivity
             }
         }
 
+        /**
+         * Compose button
+         */
         FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,8 +109,7 @@ public class TimelineActivity extends AppCompatActivity
         scrollListener = new EndlessRecyclerViewScrollListener(layoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-
-                loadNextDataFromApi(page);
+                loadNextDataFromApi();
             }
         };
         recyclerView.addOnScrollListener(scrollListener);
@@ -193,10 +194,12 @@ public class TimelineActivity extends AppCompatActivity
         });
     }
 
-    public void loadNextDataFromApi(int page) {
+    /**
+     * Code for infinite scroll
+     */
+    public void loadNextDataFromApi() {
         populateTimeline(maxTweetId,-1);
     }
-
 
     public void openComposeFrag(String tweet) {
         FragmentManager fm = getSupportFragmentManager();
@@ -207,17 +210,18 @@ public class TimelineActivity extends AppCompatActivity
 
     @Override
     public void onFinishTweet(Tweet tweet) {
-
         tweets.add(0,tweet);
         adapter.notifyItemInserted(0);
         layoutManager.scrollToPosition(0);
-
     }
 
     public TwitterClient getTwitterClient() {
         return twitterCLient;
     }
 
+    /**
+     * Code to save to db
+     */
     @Override
     protected void onStop() {
 
@@ -246,6 +250,9 @@ public class TimelineActivity extends AppCompatActivity
         super.onStop();
     }
 
+    /**
+     * Code to populate from database when no internet connection
+     */
     public void populateTimelineFromDb() {
         List<Tweet> tweetsFromDb = SQLite.select().from(Tweet.class).limit(50).queryList();
         tweets.addAll(tweetsFromDb);

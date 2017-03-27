@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
@@ -58,7 +59,6 @@ public class ComposeTweetFragment extends DialogFragment
     }
 
     public static ComposeTweetFragment getInstance(String tweetData) {
-
         ComposeTweetFragment frag = new ComposeTweetFragment();
         Bundle args = new Bundle();
         args.putString(TWEET,tweetData);
@@ -76,11 +76,14 @@ public class ComposeTweetFragment extends DialogFragment
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        
+
         if(getDrafts().isEmpty()) {
             binding.btnDraft.setVisibility(View.GONE);
         }
 
+        /**
+         * OnClick for draft button
+         */
         binding.btnDraft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,6 +95,9 @@ public class ComposeTweetFragment extends DialogFragment
             }
         });
 
+        /**
+         * Code to set the count and style the compose tweet body
+         */
         binding.etTweet.setHorizontallyScrolling(false);
         binding.etTweet.setHintTextColor(Color.GRAY);
         binding.etTweet.setTextColor(Color.GRAY);
@@ -123,17 +129,21 @@ public class ComposeTweetFragment extends DialogFragment
             }
         });
 
+        /**
+         * Add the text only if its passed this fragment
+         */
         String screenName = getArguments().getString(TWEET);
         if(screenName!=null) {
-            String tweetTo = screenName;
-            binding.etTweet.setText(tweetTo);
-            binding.etTweet.setSelection(tweetTo.length());
+            binding.etTweet.setText(screenName);
+            binding.etTweet.setSelection(screenName.length());
         }
 
+        /**
+         * Listener for closing the compose fragment
+         */
         binding.ivClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if(binding.etTweet.getText().length()>0) {
                     MaterialDialog dialog = new MaterialDialog.Builder(getContext())
                             .content("Save draft?")
@@ -142,7 +152,6 @@ public class ComposeTweetFragment extends DialogFragment
                             .onPositive(new MaterialDialog.SingleButtonCallback() {
                                 @Override
                                 public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-
                                     onSaveDraft(binding.etTweet.getText().toString());
                                     binding.btnDraft.setVisibility(View.VISIBLE);
                                     dismiss();
@@ -162,19 +171,23 @@ public class ComposeTweetFragment extends DialogFragment
             }
         });
 
+        /**
+         * Listener for tweeting
+         */
         binding.btnTweet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String tweet = binding.etTweet.getText().toString();
                 if(!tweet.isEmpty()){
-
                     postTweet(tweet);
                 }
                 dismiss();
             }
         });
 
+        /**
+         * Here personal info is requested to get the profile url
+         */
         TwitterClient twitterCLient = TwitterClientApplication.getTwitterClient();
         twitterCLient.getPersonalUserInfo(new JsonHttpResponseHandler() {
             @Override
@@ -195,7 +208,9 @@ public class ComposeTweetFragment extends DialogFragment
             @Override
             public void onFailure(int statusCode, Header[] headers,
                                   Throwable throwable, JSONObject errorResponse) {
-
+                /**
+                 * Need not be handled as this would not cause any user issue
+                 */
                 super.onFailure(statusCode, headers, throwable, errorResponse);
             }
         });
@@ -211,6 +226,10 @@ public class ComposeTweetFragment extends DialogFragment
         return dialog;
     }
 
+    /**
+     * Set the keyboard soft input
+     * @param savedInstanceState
+     */
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -218,6 +237,9 @@ public class ComposeTweetFragment extends DialogFragment
                 .setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
     }
 
+    /**
+     * Sets the windows to the correct size for this fragment
+     */
     @Override
     public void onResume() {
 
@@ -228,7 +250,10 @@ public class ComposeTweetFragment extends DialogFragment
         super.onResume();
     }
 
-
+    /**
+     * Function handles the tweet post
+     * @param tweetStr
+     */
     public void postTweet(String tweetStr) {
 
         final TimelineActivity activity = (TimelineActivity)getActivity();
@@ -241,36 +266,45 @@ public class ComposeTweetFragment extends DialogFragment
                         Log.d(TAG, response.toString());
                         try {
                             Tweet tweet = gson.fromJson(response.toString(), Tweet.class);
-
                             activity.onFinishTweet(tweet);
-
                         } catch (Exception e) {
-                            Log.e(TAG,e.getMessage());
+                            Snackbar snackbar = Snackbar
+                                    .make(getView(), "Error in tweeting",
+                                            Snackbar.LENGTH_LONG);
+                            snackbar.show();
                         }
                     }
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, Throwable throwable,
                                           JSONObject errorResponse) {
+                        Snackbar snackbar = Snackbar
+                                .make(getView(), "Error in posting the tweet",
+                                        Snackbar.LENGTH_LONG);
+                        snackbar.show();
                         super.onFailure(statusCode, headers, throwable, errorResponse);
                     }
                 });
     }
 
 
+    /**
+     * Function used to save the draft to preferences
+     * @param draftTweet
+     */
     private void onSaveDraft(String draftTweet) {
 
-        SharedPreferences draftsPref = getSharedPreferences();
-
-        SharedPreferences.Editor editor = draftsPref.edit();
+        SharedPreferences.Editor editor = getSharedPreferences().edit();
         editor.putString(draftTweet, draftTweet);
         editor.apply();
-
         binding.btnDraft.setVisibility(View.VISIBLE);
 
     }
 
-
+    /**
+     * Function returns the SharedPreferences
+     * @return
+     */
     private SharedPreferences getSharedPreferences() {
 
         SharedPreferences draftsPref = getActivity()
@@ -279,6 +313,10 @@ public class ComposeTweetFragment extends DialogFragment
         return draftsPref;
     }
 
+    /**
+     * Function returns a list of drafts
+     * @return
+     */
     private List<String> getDrafts() {
 
         SharedPreferences sharedPreferences = getSharedPreferences();

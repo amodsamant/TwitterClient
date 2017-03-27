@@ -60,14 +60,9 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
         final Tweet tweet = tweets.get(position);
-
         final ViewHolderBR viewHolder = (ViewHolderBR) holder;
 
-//        viewHolder.tvUser.setTypeface(Typeface
-//                .createFromAsset(context.getAssets(), "fonts/HelveticaNeue.ttf"));
-
         viewHolder.tvUser.setText(tweet.getUser().getName());
-
         if(tweet.getUser()!=null && tweet.getUser().isVerified()) {
             viewHolder.ivVerified.setVisibility(View.VISIBLE);
         } else {
@@ -75,12 +70,13 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
         }
 
         viewHolder.tvScreenName.setText("@"+tweet.getUser().getScreenName());
-
         viewHolder.tvRelTime.setText(DateGenericUtils.
                 getRelativeTimeAgo(tweet.getCreatedAt()));
-
         viewHolder.ivUser.setImageResource(0);
 
+        /**
+         * Code to set profile image
+         */
         String profileImageUrl = GenericUtils.modifyProfileImageUrl(tweet.getUser().getProfileImageUrl());
         Glide.with(context).load(profileImageUrl)
                 .fitCenter()
@@ -88,6 +84,9 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
                 .diskCacheStrategy( DiskCacheStrategy.SOURCE )
                 .into(viewHolder.ivUser);
 
+        /**
+         * Code to set tweet image
+         */
         viewHolder.ivTweet.setImageResource(0);
         if(tweet.getEntities()!=null && tweet.getEntities().getMedia()!=null &&
                 !tweet.getEntities().getMedia().isEmpty()  &&
@@ -109,6 +108,9 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
                     .into(viewHolder.ivTweet);
         }
 
+        /**
+         * Handle video url
+         */
         if(tweet.getExtendedEntities()!=null && tweet.getExtendedEntities().getMedia()!=null &&
                 !tweet.getExtendedEntities().getMedia().isEmpty()  &&
                 tweet.getExtendedEntities().getMedia().get(0).getType().equalsIgnoreCase("video")) {
@@ -118,13 +120,13 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
 
         }
 
+        /**
+         * Custom font HelveticaNeueLight
+         */
         Typeface fontLight = Typeface
                 .createFromAsset(context.getAssets(), "fonts/HelveticaNeueLight.ttf");
         viewHolder.tvBody.setTypeface(fontLight);
         viewHolder.tvBody.setText(tweet.getBody());
-
-
-
         viewHolder.btnRetweet.setText(String.valueOf(tweet.getRetweetCount()));
         if(!tweet.isRetweeted()) {
             Drawable img = context.getResources().getDrawable(R.drawable.ic_retweet);
@@ -148,8 +150,6 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
                 }
             }
         });
-
-        viewHolder.btnLike.setText(String.valueOf(tweet.getFavouritesCount()));
 
         viewHolder.btnLike.setText(String.valueOf(tweet.getFavouritesCount()));
         if(!tweet.isFavorited()) {
@@ -178,7 +178,6 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
         viewHolder.btnReply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 FragmentManager fm = ((AppCompatActivity)context).getSupportFragmentManager();
                 ComposeTweetFragment fragment = ComposeTweetFragment
                         .getInstance(tweet.getUser().getScreenName());
@@ -190,7 +189,6 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(context, TweetDetailActivity.class);
                 intent.putExtra("tweet", Parcels.wrap(tweet));
                 context.startActivity(intent);

@@ -11,7 +11,6 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -50,7 +49,6 @@ public class TweetDetailActivity extends AppCompatActivity {
         TextView tvText = (TextView) findViewById(R.id.tvText);
         tvText.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/HelveticaNeueLight.ttf"));
 
-
         TextView tvRetweetCount = (TextView) findViewById(R.id.tvRetweetCount);
         tvRetweetCount.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/HelveticaNeueLight.ttf"));
         TextView tvLikeCount = (TextView) findViewById(R.id.tvLikeCount);
@@ -72,6 +70,9 @@ public class TweetDetailActivity extends AppCompatActivity {
         tvScreenName.setText("@"+tweet.getUser().getScreenName());
         tvText.setText(tweet.getBody());
 
+        /**
+         * Using a Span here to have a different style inside of each text view
+         */
         ForegroundColorSpan blackSpan = new ForegroundColorSpan(
                 getResources().getColor(R.color.twitterDarkerGrey));
         SpannableStringBuilder ssb = new SpannableStringBuilder(String.valueOf(tweet.getRetweetCount()));
@@ -103,16 +104,15 @@ public class TweetDetailActivity extends AppCompatActivity {
         if(tweet.getEntities()!=null && tweet.getEntities().getMedia()!=null &&
                 !tweet.getEntities().getMedia().isEmpty()  &&
                 tweet.getEntities().getMedia().get(0).getMediaUrlHttps()!=null) {
-            Log.d("DEBUG", tweet.getEntities().getMedia().get(0).getMediaUrlHttps());
-
             getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
             int height = displayMetrics.heightPixels;
             int width = displayMetrics.widthPixels;
-
             ivTweet.setVisibility(View.VISIBLE);
 
+            /**
+             * Using large image url with RoundedCornersTransformation
+             */
             String imageUrl = tweet.getEntities().getMedia().get(0).getMediaUrlHttps()+":large";
-
             Glide.with(this).load(imageUrl)
                     .override(width,height)
                     .fitCenter()
@@ -121,9 +121,7 @@ public class TweetDetailActivity extends AppCompatActivity {
                     .into(ivTweet);
         } else {
             ivTweet.setVisibility(View.GONE);
-
         }
-
 
         if(!tweet.getUser().isVerified()) {
             ivVerified.setVisibility(View.GONE);

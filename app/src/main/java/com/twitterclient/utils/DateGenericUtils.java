@@ -48,6 +48,11 @@ public class DateGenericUtils {
         return relativeDate;
     }
 
+    /**
+     * Function retrieves the time in "h:mm a" format
+     * @param rawJsonDate
+     * @return
+     */
     public static String getTime(String rawJsonDate) {
 
         sf.setLenient(true);
@@ -61,6 +66,11 @@ public class DateGenericUtils {
         return time;
     }
 
+    /**
+     * Function retrieves the date in "dd MMM yy" format
+     * @param rawJsonDate
+     * @return
+     */
     public static String getDate(String rawJsonDate) {
 
         sf.setLenient(true);

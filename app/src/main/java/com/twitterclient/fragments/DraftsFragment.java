@@ -49,12 +49,10 @@ public class DraftsFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.drafts_frag, container);
 
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbarDrafts);
-
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.setSupportActionBar(toolbar);
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         activity.getSupportActionBar().setTitle("Drafts");
-
         return view;
     }
 
@@ -65,7 +63,6 @@ public class DraftsFragment extends DialogFragment {
         drafts = getDrafts();
         lvDrafts = (ListView) view.findViewById(R.id.lvDrafts);
         adapter = new DraftsAdapter(getContext(), drafts);
-
         lvDrafts.setAdapter(adapter);
 
         lvDrafts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -84,6 +81,10 @@ public class DraftsFragment extends DialogFragment {
 
     }
 
+    /**
+     * Function gets a list of drafts from the saved shared preferences
+     * @return
+     */
     private List<String> getDrafts() {
 
        SharedPreferences sharedPreferences = getActivity()
@@ -97,6 +98,10 @@ public class DraftsFragment extends DialogFragment {
 
         return drafts;
     }
+
+    /**
+     * Sets the windows to the correct size for this fragment
+     */
     @Override
     public void onResume() {
 
@@ -107,8 +112,11 @@ public class DraftsFragment extends DialogFragment {
         super.onResume();
     }
 
+    /**
+     * Sends the tweet back to the compose fragment
+     * @param tweetDraft
+     */
     public void sendBackResult(String tweetDraft) {
-        // Notice the use of `getTargetFragment` which will be set when the dialog is displayed
         DraftsFragmentListener listener = (DraftsFragmentListener) getTargetFragment();
         listener.onFinishDraft(tweetDraft);
         dismiss();
@@ -122,5 +130,4 @@ public class DraftsFragment extends DialogFragment {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

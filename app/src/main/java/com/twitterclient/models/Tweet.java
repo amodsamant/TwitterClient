@@ -82,24 +82,12 @@ public class Tweet extends BaseModel {
         return body;
     }
 
-    public void setBody(String body) {
-        this.body = body;
-    }
-
     public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
     public User getUser() {
         return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public boolean isFavorited() {
@@ -138,25 +126,11 @@ public class Tweet extends BaseModel {
         return entities;
     }
 
-    public void setEntities(Entities entities) {
-        this.entities = entities;
-    }
-
     public ExtendedEntities getExtendedEntities() {
         return extendedEntities;
-    }
-
-    public void setExtendedEntities(ExtendedEntities extendedEntities) {
-        this.extendedEntities = extendedEntities;
     }
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-
 }
