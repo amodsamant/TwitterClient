@@ -3491,13 +3491,13 @@ containing a value of this type.
         public static final int abc_textfield_search_material=0x7f020051;
         public static final int abc_vector_test=0x7f020052;
         public static final int avd_hide_password=0x7f020053;
-        public static final int avd_hide_password_1=0x7f02007e;
-        public static final int avd_hide_password_2=0x7f02007f;
-        public static final int avd_hide_password_3=0x7f020080;
+        public static final int avd_hide_password_1=0x7f02007f;
+        public static final int avd_hide_password_2=0x7f020080;
+        public static final int avd_hide_password_3=0x7f020081;
         public static final int avd_show_password=0x7f020054;
-        public static final int avd_show_password_1=0x7f020081;
-        public static final int avd_show_password_2=0x7f020082;
-        public static final int avd_show_password_3=0x7f020083;
+        public static final int avd_show_password_1=0x7f020082;
+        public static final int avd_show_password_2=0x7f020083;
+        public static final int avd_show_password_3=0x7f020084;
         public static final int design_bottom_navigation_item_background=0x7f020055;
         public static final int design_fab_background=0x7f020056;
         public static final int design_ic_visibility=0x7f020057;
@@ -3505,40 +3505,41 @@ containing a value of this type.
         public static final int design_password_eye=0x7f020059;
         public static final int design_snackbar_background=0x7f02005a;
         public static final int ic_close=0x7f02005b;
-        public static final int ic_favorite=0x7f02005c;
-        public static final int ic_favorite_set=0x7f02005d;
-        public static final int ic_reply=0x7f02005e;
-        public static final int ic_retweet=0x7f02005f;
-        public static final int ic_retweet_set=0x7f020060;
-        public static final int ic_tweet=0x7f020061;
-        public static final int ic_tweet_toolbar=0x7f020062;
-        public static final int ic_verified_user=0x7f020063;
-        public static final int md_btn_selected=0x7f020064;
-        public static final int md_btn_selected_dark=0x7f020065;
-        public static final int md_btn_selector=0x7f020066;
-        public static final int md_btn_selector_dark=0x7f020067;
-        public static final int md_btn_selector_ripple=0x7f020068;
-        public static final int md_btn_selector_ripple_dark=0x7f020069;
-        public static final int md_btn_shape=0x7f02006a;
-        public static final int md_item_selected=0x7f02006b;
-        public static final int md_item_selected_dark=0x7f02006c;
-        public static final int md_nav_back=0x7f02006d;
-        public static final int md_selector=0x7f02006e;
-        public static final int md_selector_dark=0x7f02006f;
-        public static final int md_transparent=0x7f020070;
-        public static final int navigation_empty_icon=0x7f020071;
-        public static final int notification_action_background=0x7f020072;
-        public static final int notification_bg=0x7f020073;
-        public static final int notification_bg_low=0x7f020074;
-        public static final int notification_bg_low_normal=0x7f020075;
-        public static final int notification_bg_low_pressed=0x7f020076;
-        public static final int notification_bg_normal=0x7f020077;
-        public static final int notification_bg_normal_pressed=0x7f020078;
-        public static final int notification_icon_background=0x7f020079;
-        public static final int notification_template_icon_bg=0x7f02007c;
-        public static final int notification_template_icon_low_bg=0x7f02007d;
-        public static final int notification_tile_bg=0x7f02007a;
-        public static final int notify_panel_notification_icon_bg=0x7f02007b;
+        public static final int ic_draft=0x7f02005c;
+        public static final int ic_favorite=0x7f02005d;
+        public static final int ic_favorite_set=0x7f02005e;
+        public static final int ic_reply=0x7f02005f;
+        public static final int ic_retweet=0x7f020060;
+        public static final int ic_retweet_set=0x7f020061;
+        public static final int ic_tweet=0x7f020062;
+        public static final int ic_tweet_toolbar=0x7f020063;
+        public static final int ic_verified_user=0x7f020064;
+        public static final int md_btn_selected=0x7f020065;
+        public static final int md_btn_selected_dark=0x7f020066;
+        public static final int md_btn_selector=0x7f020067;
+        public static final int md_btn_selector_dark=0x7f020068;
+        public static final int md_btn_selector_ripple=0x7f020069;
+        public static final int md_btn_selector_ripple_dark=0x7f02006a;
+        public static final int md_btn_shape=0x7f02006b;
+        public static final int md_item_selected=0x7f02006c;
+        public static final int md_item_selected_dark=0x7f02006d;
+        public static final int md_nav_back=0x7f02006e;
+        public static final int md_selector=0x7f02006f;
+        public static final int md_selector_dark=0x7f020070;
+        public static final int md_transparent=0x7f020071;
+        public static final int navigation_empty_icon=0x7f020072;
+        public static final int notification_action_background=0x7f020073;
+        public static final int notification_bg=0x7f020074;
+        public static final int notification_bg_low=0x7f020075;
+        public static final int notification_bg_low_normal=0x7f020076;
+        public static final int notification_bg_low_pressed=0x7f020077;
+        public static final int notification_bg_normal=0x7f020078;
+        public static final int notification_bg_normal_pressed=0x7f020079;
+        public static final int notification_icon_background=0x7f02007a;
+        public static final int notification_template_icon_bg=0x7f02007d;
+        public static final int notification_template_icon_low_bg=0x7f02007e;
+        public static final int notification_tile_bg=0x7f02007b;
+        public static final int notify_panel_notification_icon_bg=0x7f02007c;
     }
     public static final class id {
         public static final int action0=0x7f0d00c7;
@@ -3923,15 +3924,8 @@ containing a value of this type.
         public static final int Animation_AppCompat_DropDownUp=0x7f0900a9;
         public static final int Animation_Design_BottomSheetDialog=0x7f0900aa;
         /**  API 14 theme customizations can go here. 
-
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        
          */
         public static final int AppBaseTheme=0x7f09002a;
-        /**  All customizations that are NOT specific to a particular API-level can go here. 
-         */
         public static final int AppTheme=0x7f0900ab;
         public static final int AppTheme_AppBarOverlay=0x7f0900ac;
         public static final int AppTheme_NoActionBar=0x7f0900ad;

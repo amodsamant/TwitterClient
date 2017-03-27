@@ -4,10 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import com.bumptech.glide.Glide;
 import com.twitterclient.R;
@@ -72,7 +74,8 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
 
         String profileImageUrl = GenericUtils.modifyProfileImageUrl(tweet.getUser().getProfileImageUrl());
         Glide.with(context).load(profileImageUrl)
-                .bitmapTransform(new RoundedCornersTransformation(context,2,2))
+                .fitCenter()
+                .bitmapTransform(new RoundedCornersTransformation(context,5,0))
                 .into(viewHolder.ivUser);
 
         viewHolder.ivTweet.setImageResource(0);
@@ -81,9 +84,16 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
                 tweet.getEntities().getMedia().get(0).getMediaUrlHttps()!=null) {
             Log.d("DEBUG", tweet.getEntities().getMedia().get(0).getMediaUrlHttps()+":large");
 
-            Glide.with(context).load(tweet.getEntities().getMedia().get(0).getMediaUrlHttps()+":large")
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            WindowManager window = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+            window.getDefaultDisplay().getMetrics(displayMetrics);
+            int height = displayMetrics.heightPixels;
+            int width = displayMetrics.widthPixels;
+
+            Glide.with(context).load(tweet.getEntities().getMedia().get(0).getMediaUrlHttps()+":medium")
+                    .override(600,200)
                     .fitCenter()
-                    .bitmapTransform( new RoundedCornersTransformation(context,20,10))
+                    .bitmapTransform( new RoundedCornersTransformation(context,10,0))
                     .into(viewHolder.ivTweet);
         }
 

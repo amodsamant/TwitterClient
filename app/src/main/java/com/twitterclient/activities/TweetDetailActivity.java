@@ -71,7 +71,7 @@ public class TweetDetailActivity extends AppCompatActivity {
         ivUser.setImageResource(0);
         Glide.with(this).load(tweet.getUser().getProfileImageUrl())
                 .fitCenter()
-                .bitmapTransform( new RoundedCornersTransformation(this,5,5))
+                .bitmapTransform( new RoundedCornersTransformation(this,5,0))
                 .into(ivUser);
 
         ivTweet.setImageResource(0);
@@ -111,7 +111,7 @@ public class TweetDetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 FragmentManager fm = getSupportFragmentManager();
                 ComposeTweetFragment fragment = ComposeTweetFragment
-                        .getInstance(tweet.getUser().getScreenName());
+                        .getInstance("@ "+ tweet.getUser().getScreenName()+ " ");
                 fragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.Dialog_FullScreen);
                 fragment.show(fm,"compose_frag");
             }

@@ -17,9 +17,8 @@
 
     <ImageView
         android:id="@+id/ivUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -90,10 +89,10 @@
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/ivUser"
         android:layout_toStartOf="@+id/ivUser"
-        android:layout_marginRight="15dp"
+        android:layout_marginRight="25dp"
         android:layout_marginTop="20dp"
         android:minHeight="0dp"
         android:minWidth="0dp"
-        android:background="@drawable/ic_tweet_toolbar"/>
+        android:background="@drawable/ic_draft"/>
 
 </RelativeLayout>

@@ -1,7 +1,6 @@
 package com.twitterclient.activities;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
@@ -60,6 +59,7 @@ public class TimelineActivity extends AppCompatActivity
     SwipeRefreshLayout swipeRefreshLayout;
 
     static long maxTweetId = -1;
+    static long sinceId = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +67,7 @@ public class TimelineActivity extends AppCompatActivity
         setContentView(R.layout.activity_timeline);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
+        getSupportActionBar().setTitle("Home");
 
         Intent intent = getIntent();
         String action = intent.getAction();
@@ -75,11 +75,8 @@ public class TimelineActivity extends AppCompatActivity
 
         if (Intent.ACTION_SEND.equals(action) && type != null) {
             if ("text/plain".equals(type)) {
-
-                // Make sure to check whether returned data will be null.
-                String titleOfPage = intent.getStringExtra(Intent.EXTRA_SUBJECT);
                 String urlOfPage = intent.getStringExtra(Intent.EXTRA_TEXT);
-                Uri imageUriOfPage = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+                openComposeFrag(urlOfPage);
             }
         }
 
@@ -88,7 +85,7 @@ public class TimelineActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openComposeFrag();
+                openComposeFrag(null);
             }
         });
 
@@ -122,7 +119,7 @@ public class TimelineActivity extends AppCompatActivity
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                populateTimeline(-1,0);
+                populateTimeline(-1, 1);
             }
         });
 
@@ -134,7 +131,7 @@ public class TimelineActivity extends AppCompatActivity
          * Calling populate time line with since id of 1 for loading the initial tweets
          */
         if(NetworkUtils.isNetworkAvailable(this) && NetworkUtils.isOnline()) {
-            populateTimeline(maxTweetId, 1);
+            populateTimeline(maxTweetId, sinceId);
         }
 
     }
@@ -159,6 +156,7 @@ public class TimelineActivity extends AppCompatActivity
 
                 if(sinceId==1) {
                     tweets.clear();
+                    adapter.notifyDataSetChanged();
                 }
                 Log.d("DEBUG", response.toString());
                 List<Tweet> respTweets = new ArrayList<>();
@@ -203,9 +201,9 @@ public class TimelineActivity extends AppCompatActivity
     }
 
 
-    public void openComposeFrag() {
+    public void openComposeFrag(String tweet) {
         FragmentManager fm = getSupportFragmentManager();
-        ComposeTweetFragment fragment = ComposeTweetFragment.getInstance(null);
+        ComposeTweetFragment fragment = ComposeTweetFragment.getInstance(tweet);
         fragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.Dialog_FullScreen);
         fragment.show(fm,"compose_frag");
     }

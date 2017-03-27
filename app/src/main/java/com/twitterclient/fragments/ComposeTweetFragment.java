@@ -25,11 +25,16 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.twitterclient.R;
 import com.twitterclient.activities.TimelineActivity;
 import com.twitterclient.models.Tweet;
+import com.twitterclient.models.User;
+import com.twitterclient.network.TwitterClient;
+import com.twitterclient.network.TwitterClientApplication;
+import com.twitterclient.utils.GenericUtils;
 
 import org.json.JSONObject;
 
@@ -38,6 +43,7 @@ import java.util.List;
 import java.util.Map;
 
 import cz.msebera.android.httpclient.Header;
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class ComposeTweetFragment extends DialogFragment
         implements DraftsFragment.DraftsFragmentListener{
@@ -61,11 +67,11 @@ public class ComposeTweetFragment extends DialogFragment
     public ComposeTweetFragment() {
     }
 
-    public static ComposeTweetFragment getInstance(String replyUser) {
+    public static ComposeTweetFragment getInstance(String tweetData) {
 
         ComposeTweetFragment frag = new ComposeTweetFragment();
         Bundle args = new Bundle();
-        args.putString("replyUser",replyUser);
+        args.putString("tweet",tweetData);
         frag.setArguments(args);
         return frag;
     }
@@ -185,6 +191,32 @@ public class ComposeTweetFragment extends DialogFragment
                 dismiss();
             }
         });
+
+        TwitterClient twitterCLient = TwitterClientApplication.getTwitterClient();
+        twitterCLient.getPersonalUserInfo(new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                Gson gson = new Gson();
+                User user = gson.fromJson(response.toString(),
+                        User.class);
+
+                ivUser.setImageResource(0);
+                String profileImageUrl = GenericUtils.modifyProfileImageUrl(user.getProfileImageUrl());
+                Glide.with(getContext()).load(profileImageUrl)
+                        .fitCenter()
+                        .bitmapTransform(new RoundedCornersTransformation(getContext(),5,0))
+                        .into(ivUser);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers,
+                                  Throwable throwable, JSONObject errorResponse) {
+
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+            }
+        });
+
 
     }
 

@@ -16,7 +16,7 @@ public class TwitterClient extends OAuthBaseClient {
 	public static final String REST_CONSUMER_SECRET = "asPiAAshcipGDa2f7KY0XDaFHDmK9tgYTzuI0aAvfTMO4obZDu";
 	public static final String REST_CALLBACK_URL = "oauth://amodtwitterclient";
 
-	public static final int RETRIEVE_COUNT = 20;
+	public static final int RETRIEVE_COUNT = 30;
 	public TwitterClient(Context context) {
 		super(context, REST_API_CLASS, BASE_API_URL, REST_CONSUMER_KEY, REST_CONSUMER_SECRET, REST_CALLBACK_URL);
 	}
@@ -50,6 +50,17 @@ public class TwitterClient extends OAuthBaseClient {
         getClient().post(apiUrl, params, handler);
     }
 
+
+
+	public void getPersonalUserInfo(AsyncHttpResponseHandler handler) {
+
+		String apiUrl = getApiUrl("/users/show.json");
+
+		RequestParams params = new RequestParams();
+		params.put("screen_name","amod_samant");
+
+		getClient().get(apiUrl, params, handler);
+	}
 
 
 
