@@ -32,14 +32,12 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class TweetDetailActivity extends AppCompatActivity {
 
-//    ActivityTweetDetailBinding actBinding;
     DisplayMetrics displayMetrics = new DisplayMetrics();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tweet_detail);
-//        actBinding = DataBindingUtil.setContentView(this,R.layout.activity_tweet_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarDetail);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Tweet");
@@ -93,10 +91,6 @@ public class TweetDetailActivity extends AppCompatActivity {
                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         ssbFav.append(" LIKES");
         tvLikeCount.setText(ssbFav, TextView.BufferType.EDITABLE);
-
-
-
-
 
         ivUser.setImageResource(0);
         Glide.with(this).load(tweet.getUser().getProfileImageUrl())
@@ -163,7 +157,6 @@ public class TweetDetailActivity extends AppCompatActivity {
             Drawable img = getResources().getDrawable(R.drawable.ic_retweet_set);
             btnRetweet.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
         }
-
     }
 
     @Override

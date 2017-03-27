@@ -28,7 +28,6 @@ public class DraftsAdapter extends ArrayAdapter<String> {
         if(convertView==null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.draft_item, parent, false);
         }
-
         TextView tvDraft = (TextView) convertView.findViewById(R.id.tvDraft);
         tvDraft.setText(draftText);
 

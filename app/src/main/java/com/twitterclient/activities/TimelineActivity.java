@@ -80,7 +80,6 @@ public class TimelineActivity extends AppCompatActivity
             }
         }
 
-//        binding = DataBindingUtil.setContentView(this,R.layout.activity_timeline);
         FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,7 +132,6 @@ public class TimelineActivity extends AppCompatActivity
         if(NetworkUtils.isNetworkAvailable(this) && NetworkUtils.isOnline()) {
             populateTimeline(maxTweetId, sinceId);
         }
-
     }
 
     /**
@@ -196,7 +194,6 @@ public class TimelineActivity extends AppCompatActivity
     }
 
     public void loadNextDataFromApi(int page) {
-
         populateTimeline(maxTweetId,-1);
     }
 
@@ -249,10 +246,7 @@ public class TimelineActivity extends AppCompatActivity
         super.onStop();
     }
 
-
     public void populateTimelineFromDb() {
-
-
         List<Tweet> tweetsFromDb = SQLite.select().from(Tweet.class).limit(50).queryList();
         tweets.addAll(tweetsFromDb);
 

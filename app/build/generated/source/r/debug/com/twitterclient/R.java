@@ -3931,8 +3931,15 @@ containing a value of this type.
         public static final int Animation_AppCompat_DropDownUp=0x7f0900a9;
         public static final int Animation_Design_BottomSheetDialog=0x7f0900aa;
         /**  API 14 theme customizations can go here. 
+
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        
          */
         public static final int AppBaseTheme=0x7f09002a;
+        /**  All customizations that are NOT specific to a particular API-level can go here. 
+         */
         public static final int AppTheme=0x7f0900ab;
         public static final int AppTheme_AppBarOverlay=0x7f0900ac;
         public static final int AppTheme_NoActionBar=0x7f0900ad;
