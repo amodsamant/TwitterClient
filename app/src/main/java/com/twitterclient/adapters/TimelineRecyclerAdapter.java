@@ -2,19 +2,20 @@ package com.twitterclient.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.twitterclient.R;
 import com.twitterclient.activities.TweetDetailActivity;
 import com.twitterclient.fragments.ComposeTweetFragment;
@@ -62,6 +63,9 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
 
         final ViewHolderBR viewHolder = (ViewHolderBR) holder;
 
+//        viewHolder.tvUser.setTypeface(Typeface
+//                .createFromAsset(context.getAssets(), "fonts/HelveticaNeue.ttf"));
+
         viewHolder.tvUser.setText(tweet.getUser().getName());
 
         if(tweet.getUser()!=null && tweet.getUser().isVerified()) {
@@ -81,13 +85,13 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
         Glide.with(context).load(profileImageUrl)
                 .fitCenter()
                 .bitmapTransform(new RoundedCornersTransformation(context,5,0))
+                .diskCacheStrategy( DiskCacheStrategy.SOURCE )
                 .into(viewHolder.ivUser);
 
         viewHolder.ivTweet.setImageResource(0);
         if(tweet.getEntities()!=null && tweet.getEntities().getMedia()!=null &&
                 !tweet.getEntities().getMedia().isEmpty()  &&
                 tweet.getEntities().getMedia().get(0).getMediaUrlHttps()!=null) {
-            Log.d("DEBUG", tweet.getEntities().getMedia().get(0).getMediaUrlHttps()+":large");
 
             DisplayMetrics displayMetrics = new DisplayMetrics();
             WindowManager window = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
@@ -95,10 +99,13 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             int height = displayMetrics.heightPixels;
             int width = displayMetrics.widthPixels;
 
-            Glide.with(context).load(tweet.getEntities().getMedia().get(0).getMediaUrlHttps()+":medium")
-                    .override(600,200)
+            String imageUrl = tweet.getEntities().getMedia().get(0).getMediaUrlHttps()+":large";
+
+            Glide.with(context).load(imageUrl)
+                    .override(width/2,height/2)
                     .fitCenter()
                     .bitmapTransform( new RoundedCornersTransformation(context,10,0))
+                    .diskCacheStrategy( DiskCacheStrategy.SOURCE )
                     .into(viewHolder.ivTweet);
         }
 
@@ -111,7 +118,11 @@ public class TimelineRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
 
         }
 
+        Typeface fontLight = Typeface
+                .createFromAsset(context.getAssets(), "fonts/HelveticaNeueLight.ttf");
+        viewHolder.tvBody.setTypeface(fontLight);
         viewHolder.tvBody.setText(tweet.getBody());
+
 
 
         viewHolder.btnRetweet.setText(String.valueOf(tweet.getRetweetCount()));

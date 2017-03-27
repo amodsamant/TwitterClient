@@ -67,7 +67,7 @@ public class TimelineActivity extends AppCompatActivity
         setContentView(R.layout.activity_timeline);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Home");
+        getSupportActionBar().setTitle("");
 
         Intent intent = getIntent();
         String action = intent.getAction();
@@ -229,6 +229,7 @@ public class TimelineActivity extends AppCompatActivity
                         new ProcessModelTransaction.ProcessModel<Tweet>() {
                             @Override
                             public void processModel(Tweet tweet, DatabaseWrapper wrapper) {
+                                tweet.setImageUrl(tweet.getEntities().getMedia().get(0).getMediaUrlHttps()+":medium");
                                 tweet.save();
                             }
                         }).addAll(tweets).build())

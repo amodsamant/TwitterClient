@@ -1,11 +1,15 @@
 package com.twitterclient.activities;
 
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MenuItem;
@@ -15,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.twitterclient.R;
 import com.twitterclient.fragments.ComposeTweetFragment;
 import com.twitterclient.models.Tweet;
@@ -41,23 +46,27 @@ public class TweetDetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         TextView tvUsername = (TextView) findViewById(R.id.tvUsername);
+
         TextView tvScreenName = (TextView) findViewById(R.id.tvScreenName);
 
         TextView tvText = (TextView) findViewById(R.id.tvText);
+        tvText.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/HelveticaNeueLight.ttf"));
+
+
         TextView tvRetweetCount = (TextView) findViewById(R.id.tvRetweetCount);
+        tvRetweetCount.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/HelveticaNeueLight.ttf"));
         TextView tvLikeCount = (TextView) findViewById(R.id.tvLikeCount);
+        tvLikeCount.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/HelveticaNeueLight.ttf"));
 
         ImageView ivUser = (ImageView) findViewById(R.id.ivUser);
         ImageView ivTweet = (ImageView) findViewById(R.id.ivTweet);
         ImageView ivVerified = (ImageView) findViewById(R.id.ivVerified);
 
         TextView tvDate = (TextView) findViewById(R.id.tvDate);
+        tvDate.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/HelveticaNeueLight.ttf"));
 
         TextView tvTime = (TextView) findViewById(R.id.tvTime);
-
-//        final EditText etReply = (EditText) findViewById(R.id.etReplyDetail);
-//        Button btnReplyDetail = (Button) findViewById(R.id.btnTweetDetail);
-
+        tvTime.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/HelveticaNeueLight.ttf"));
 
         final Tweet tweet = Parcels.unwrap(getIntent().getParcelableExtra("tweet"));
 
@@ -65,13 +74,35 @@ public class TweetDetailActivity extends AppCompatActivity {
         tvScreenName.setText("@"+tweet.getUser().getScreenName());
         tvText.setText(tweet.getBody());
 
-        tvRetweetCount.setText(tweet.getRetweetCount()+ " RETWEETS");
-        tvLikeCount.setText(tweet.getFavouritesCount()+ " LIKES");
+        ForegroundColorSpan blackSpan = new ForegroundColorSpan(
+                getResources().getColor(R.color.twitterDarkerGrey));
+        SpannableStringBuilder ssb = new SpannableStringBuilder(String.valueOf(tweet.getRetweetCount()));
+        ssb.setSpan(
+                blackSpan,
+                0,
+                ssb.length(),
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        ssb.append(" RETWEETS");
+        tvRetweetCount.setText(ssb, TextView.BufferType.EDITABLE);
+
+        SpannableStringBuilder ssbFav = new SpannableStringBuilder(String.valueOf(tweet.getFavouritesCount()));
+        ssbFav.setSpan(
+                blackSpan,
+                0,
+                ssbFav.length(),
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        ssbFav.append(" LIKES");
+        tvLikeCount.setText(ssbFav, TextView.BufferType.EDITABLE);
+
+
+
+
 
         ivUser.setImageResource(0);
         Glide.with(this).load(tweet.getUser().getProfileImageUrl())
                 .fitCenter()
                 .bitmapTransform( new RoundedCornersTransformation(this,5,0))
+                .diskCacheStrategy( DiskCacheStrategy.SOURCE )
                 .into(ivUser);
 
         ivTweet.setImageResource(0);
@@ -86,10 +117,13 @@ public class TweetDetailActivity extends AppCompatActivity {
 
             ivTweet.setVisibility(View.VISIBLE);
 
-            Glide.with(this).load(tweet.getEntities().getMedia().get(0).getMediaUrlHttps()+":large")
+            String imageUrl = tweet.getEntities().getMedia().get(0).getMediaUrlHttps()+":large";
+
+            Glide.with(this).load(imageUrl)
                     .override(width,height)
                     .fitCenter()
                     .bitmapTransform( new RoundedCornersTransformation(this,20,5))
+                    .diskCacheStrategy( DiskCacheStrategy.SOURCE )
                     .into(ivTweet);
         } else {
             ivTweet.setVisibility(View.GONE);
@@ -130,16 +164,6 @@ public class TweetDetailActivity extends AppCompatActivity {
             btnRetweet.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
         }
 
-//        etReply.setHint("Reply to @"+tweet.getUser().getScreenName());
-//        etReply.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String replyTo = "@"+ tweet.getUser().getScreenName();
-//                etReply.setText(replyTo);
-//                etReply.setSelection(replyTo.length());
-//
-//            }
-//        });
     }
 
     @Override

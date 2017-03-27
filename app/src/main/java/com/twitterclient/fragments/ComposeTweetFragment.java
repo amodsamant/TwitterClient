@@ -109,7 +109,7 @@ public class ComposeTweetFragment extends DialogFragment
                 fragment.show(fm,"drafts_frag");
             }
         });
-        
+
         etBody.setHorizontallyScrolling(false);
         etBody.setHintTextColor(Color.GRAY);
         etBody.setTextColor(Color.GRAY);

@@ -64,6 +64,8 @@ public class Tweet extends BaseModel {
     @Expose
     int favouritesCount;
 
+    @Column
+    String imageUrl;
 
     public Tweet() {
     }
@@ -147,4 +149,14 @@ public class Tweet extends BaseModel {
     public void setExtendedEntities(ExtendedEntities extendedEntities) {
         this.extendedEntities = extendedEntities;
     }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+
 }

@@ -16,7 +16,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
+            android:layout_margin="5dp"
             android:padding="4dp">
 
             <ImageView
@@ -35,8 +35,10 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
+                android:textSize="16sp"
                 android:layout_toEndOf="@+id/ivUser"
                 android:layout_toRightOf="@+id/ivUser"
+                android:textStyle="bold"
                 android:text="username" />
 
             <TextView
@@ -46,6 +48,7 @@
                 android:layout_alignBottom="@+id/ivUser"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="5dp"
+                android:textSize="14sp"
                 android:layout_toEndOf="@+id/ivUser"
                 android:layout_toRightOf="@+id/ivUser"
                 android:text="\@ name" />
@@ -57,24 +60,29 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/ivUser"
-                android:layout_margin="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
                 android:ellipsize="end"
                 android:maxLines="5"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 android:autoLink="all"
                 android:linksClickable="true"
                 />
 
             <ImageView
                 android:id="@+id/ivTweet"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/tvText"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp"
+                android:scaleType="fitXY"/>
 
             <View
                 android:id="@+id/separator2"
@@ -84,7 +92,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/tvRetweetCount"
                 android:layout_marginTop="5dp"
-                android:background="#ABABAB" />
+                android:background="#e4e4e4" />
 
             <Button
                 android:id="@+id/btnReply"
@@ -94,7 +102,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginLeft="45dp"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/ic_reply"
+                android:background="@drawable/ic_reply_detail"
                 android:minHeight="0dp"
                 android:minWidth="0dp"
                 android:layout_alignParentLeft="true" />
@@ -103,10 +111,10 @@
                 android:id="@+id/btnRetweet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_retweet"
+                android:background="@drawable/ic_retweet_detail"
                 android:minHeight="0dp"
                 android:minWidth="0dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="8dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true" />
 
@@ -119,8 +127,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@id/separator2"
                 android:layout_marginRight="45dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/ic_favorite"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/ic_favorite_detail"
                 android:minHeight="0dp"
                 android:minWidth="0dp" />
 
@@ -132,8 +140,8 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/tvTime"
                 android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                android:background="#ABABAB" />
+                android:layout_marginTop="8dp"
+                android:background="#e4e4e4" />
 
             <TextView
                 android:id="@+id/tvRetweetCount"
@@ -142,16 +150,27 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@id/separator1"
-                android:layout_margin="4dp" />
+                android:textColor="@color/twitterLightGrey"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:textSize="14dp"/>
 
             <TextView
                 android:id="@+id/tvLikeCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/separator1"
-                android:layout_margin="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:layout_toEndOf="@+id/tvRetweetCount"
-                android:layout_toRightOf="@+id/tvRetweetCount" />
+                android:layout_toRightOf="@+id/tvRetweetCount"
+                android:textColor="@color/twitterLightGrey"
+                android:textSize="14dp"
+                />
 
             <TextView
                 android:id="@+id/tvTime"
@@ -160,23 +179,29 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/ivTweet"
-                android:layout_margin="2dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:textColor="@color/twitterLightGrey"
+                android:textSize="14dp"
                 android:text="Time" />
 
             <TextView
                 android:id="@+id/tvDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/tvTime"
-                android:layout_below="@id/ivTweet"
-                android:layout_margin="2dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="2dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="5dp"
                 android:layout_toEndOf="@+id/tvTime"
                 android:layout_toRightOf="@+id/tvTime"
-                android:text="Date" />
+                android:paddingLeft="10dp"
+                android:textColor="@color/twitterLightGrey"
+                android:text="Date"
+                android:layout_marginRight="2dp"
+                android:layout_alignBottom="@+id/tvTime"
+                android:textSize="14dp"
+                android:layout_alignTop="@+id/tvTime" />
 
             <ImageView
                 android:id="@+id/ivVerified"

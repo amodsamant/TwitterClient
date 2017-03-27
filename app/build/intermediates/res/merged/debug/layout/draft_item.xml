@@ -11,5 +11,6 @@
         android:fontFamily="serif"
         android:textSize="22sp"
         android:maxLines="3"
-        android:ellipsize="end"/>
+        android:ellipsize="end"
+        android:textColor="@color/twitterDarkerGrey"/>
 </FrameLayout>
